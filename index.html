@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alvin Ardian | Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+    (function(){
+        // Ganti dengan Public Key asli dari Account Settings EmailJS Anda
+        emailjs.init({ publicKey: "GoGHrmMxyRRM7u3Ia" });
+    })();
+    </script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0B0F19',
+                            card: '#161F30',
+                            accent: '#10B981', // Emerald
+                            neon: '#06B6D4', // Cyan
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        img {
+            -webkit-user-select: none;  /* Safari */
+            -moz-user-select: none;     /* Firefox */
+            -ms-user-select: none;      /* IE10+/Edge */
+            user-select: none;          /* Standard */
+            -webkit-user-drag: none;    /* Mencegah drag di Chrome/Safari */
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0F19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1F2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10B981;
+        }
+
+        /* Glassmorphism effects */
+        .glass-nav {
+            background: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glass-card {
+            background: rgba(22, 31, 48, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(16, 185, 129, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.15);
+        }
+
+        /* Reveal animations class */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-gray-200 font-sans overflow-x-hidden">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#home" class="text-2xl font-extrabold tracking-wider bg-gradient-to-r from-brand-accent to-brand-neon bg-clip-text text-transparent hover:opacity-80 transition duration-300">
+                Alvin Ardian<span class="text-white">.</span>
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center space-x-8 text-sm font-semibold tracking-wide">
+                <a href="#home" class="hover:text-brand-accent transition duration-300">Beranda</a>
+                <a href="#about" class="hover:text-brand-accent transition duration-300">Tentang</a>
+                <a href="#portfolio" class="hover:text-brand-accent transition duration-300">Portofolio</a>
+                <a href="#experience" class="hover:text-brand-accent transition duration-300">Pengalaman</a>
+                <a href="#contact" class="hover:text-brand-accent transition duration-300">Kontak</a>
+            </div>
+
+            <!-- Desktop CTA -->
+            <div class="hidden md:block">
+                <a href="#contact" class="px-5 py-2.5 rounded-full border border-brand-accent/30 bg-brand-accent/10 hover:bg-brand-accent text-white hover:text-brand-dark font-medium transition-all duration-300 text-sm shadow-lg shadow-brand-accent/10">
+                    Hubungi Saya
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl focus:outline-none hover:text-brand-accent transition duration-300" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-drawer" class="fixed top-0 left-0 w-full bg-brand-dark/95 backdrop-blur-lg border-b border-white/5 shadow-2xl z-50 transform -translate-y-full transition-transform duration-300 ease-in-out md:hidden flex flex-col p-6 rounded-b-3xl">
+            <button id="mobile-close-btn" class="self-end text-2xl mb-8 hover:text-brand-accent transition duration-300" aria-label="Close Menu">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="flex flex-col space-y-6 text-lg font-medium">
+                <a href="#home" class="mobile-link hover:text-brand-accent transition duration-300">Beranda</a>
+                <a href="#about" class="mobile-link hover:text-brand-accent transition duration-300">Tentang</a>
+                <a href="#portfolio" class="mobile-link hover:text-brand-accent transition duration-300">Portofolio</a>
+                <a href="#experience" class="mobile-link hover:text-brand-accent transition duration-300">Pengalaman</a>
+                <a href="#contact" class="mobile-link hover:text-brand-accent transition duration-300">Kontak</a>
+            </div>
+            <a href="#contact" class="mobile-link mt-8 w-full text-center py-3 rounded-xl bg-gradient-to-r from-brand-accent to-brand-neon text-brand-dark font-bold hover:shadow-lg hover:shadow-brand-accent/20 transition duration-300">
+                Hubungi Saya
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen relative flex items-center justify-center pt-32 lg:pt-20 overflow-hidden px-6">
+        <!-- Abstract glowing backgrounds -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-accent/10 rounded-full blur-[120px] animate-pulse-slow"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-neon/10 rounded-full blur-[120px] animate-pulse-slow"></div>
+
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <!-- Text Content -->
+            <div class="lg:col-span-7 flex flex-col space-y-6 text-center lg:text-left order-2 lg:order-1">
+                <div class="inline-flex items-center space-x-2 bg-brand-accent/15 border border-brand-accent/30 text-brand-accent px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase self-center lg:self-start">
+                    <span class="flex h-2 w-2 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-accent"></span>
+                    </span>
+                    <span>Tersedia untuk Freelance & Kolaborasi</span>
+                </div>
+                
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight text-white">
+                    Halo, Saya <span class="bg-gradient-to-r from-brand-accent to-brand-neon bg-clip-text text-transparent">Alvin Ardian</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-gray-400 font-light max-w-2xl">
+                    Seorang <span class="text-white font-semibold">Kreator Digital Multitalenta</span> yang berfokus memadukan keindahan visual dengan fungsionalitas teknologi modern. Saya siap mewujudkan ide kreatif Anda menjadi nyata.
+                </p>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-brand-accent to-brand-neon text-brand-dark font-bold shadow-lg shadow-brand-accent/20 hover:shadow-brand-accent/40 transform hover:-translate-y-1 transition-all duration-300 text-center">
+                        Hubungi Saya <i class="fas fa-paper-plane ml-2"></i>
+                    </a>
+                    <a href="#portfolio" class="w-full sm:w-auto px-8 py-4 rounded-full border border-white/10 hover:border-brand-accent/40 bg-white/5 hover:bg-white/10 text-white font-medium transition-all duration-300 text-center">
+                        Lihat Portofolio <i class="fas fa-arrow-right ml-2 text-brand-accent"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Profile Image Holder -->
+            <div class="lg:col-span-5 flex justify-center order-1 lg:order-2">
+                <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 animate-float">
+                    <!-- Rotating Glowing Ring -->
+                    <div class="absolute inset-0 rounded-[2rem] bg-gradient-to-tr from-brand-accent to-brand-neon opacity-20 blur-xl"></div>
+                    <!-- Frame Border -->
+                    <div class="absolute inset-0 rounded-[2rem] p-1 bg-gradient-to-tr from-brand-accent to-brand-neon">
+                        <!-- Image Container with Fallback/Placeholder -->
+                        <div class="w-full h-full rounded-[1.8rem] bg-brand-card overflow-hidden relative flex items-center justify-center">
+                            <!-- Premium Placeholder Image from Unsplash -->
+                            <img src="image/profil.jpeg" 
+                                 alt="Aditya Pratama" 
+                                 class="w-full h-full object-cover"
+                                 onerror="this.style.display='none'; document.getElementById('avatar-svg').classList.remove('hidden')">
+                            
+                            <!-- SVG Fallback in case of loading failure -->
+                            <div id="avatar-svg" class="hidden absolute inset-0 flex items-center justify-center bg-brand-card p-6">
+                                <svg class="w-full h-full text-brand-accent/40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="50" cy="40" r="20" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M15 85C15 70 30 60 50 60C70 60 85 70 85 85" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll down indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center space-y-2 opacity-50 hover:opacity-100 transition duration-300">
+            <span class="text-xs uppercase tracking-widest text-gray-400">Gulir Kebawah</span>
+            <div class="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center p-1.5">
+                <div class="w-1.5 h-1.5 bg-brand-accent rounded-full animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-24 px-6 bg-brand-card/20 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Visual Stats Panel -->
+                <div class="lg:col-span-5 grid grid-cols-2 gap-4 reveal">
+                    <div class="p-6 rounded-2xl bg-brand-card border border-white/5 flex flex-col justify-between">
+                        <span class="text-4xl md:text-5xl font-extrabold text-brand-accent">05+</span>
+                        <span class="text-sm text-gray-400 mt-2">Tahun Pengalaman Kerja</span>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-brand-card border border-white/5 flex flex-col justify-between">
+                        <span class="text-4xl md:text-5xl font-extrabold text-brand-neon">50+</span>
+                        <span class="text-sm text-gray-400 mt-2">Projek Selesai</span>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-brand-card border border-white/5 flex flex-col justify-between col-span-2">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-accent/15 flex items-center justify-center text-brand-accent text-xl">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Kepuasan Klien 100%</h4>
+                                <p class="text-xs text-gray-400">Mengutamakan kualitas & detail hasil akhir</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text content -->
+                <div class="lg:col-span-7 flex flex-col space-y-6 reveal">
+                    <div class="flex items-center space-x-3">
+                        <span class="h-[2px] w-8 bg-brand-accent"></span>
+                        <span class="text-brand-accent uppercase tracking-widest text-sm font-semibold">Tentang Saya</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white">
+                        Menyatukan Estetika Visual dengan Keunggulan Teknologi
+                    </h2>
+                    <p class="text-gray-400 leading-relaxed">
+                        Halo! Bonaventura Alvin Ardian, seorang pekerja kreatif berlatar belakang multimedia dan rekayasa perangkat lunak. Ketertarikan saya pada dunia desain grafis, fotografi, dan editing video memberikan saya mata yang jeli terhadap keindahan visual. Sementara keahlian saya dalam pengembangan website memungkinkan saya mewujudkan visi estetis tersebut ke dalam platform fungsional yang stabil.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed">
+                        Saya percaya bahwa setiap karya, baik berupa logo, tangkapan foto, video sinematik, maupun baris kode pemrograman, memiliki cerita tersendiri. Fokus utama saya adalah membantu jenama (brand) menceritakan kisah mereka secara efektif dan memukau audiens.
+                    </p>
+
+                    <!-- Core Skills list -->
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="flex items-center space-x-2.5">
+                            <i class="fas fa-check-circle text-brand-accent"></i>
+                            <span class="text-sm text-gray-300">Desain Grafis / Branding</span>
+                        </div>
+                        <div class="flex items-center space-x-2.5">
+                            <i class="fas fa-check-circle text-brand-accent"></i>
+                            <span class="text-sm text-gray-300">Fotografi Komersial</span>
+                        </div>
+                        <div class="flex items-center space-x-2.5">
+                            <i class="fas fa-check-circle text-brand-accent"></i>
+                            <span class="text-sm text-gray-300">Editing Video & Motion</span>
+                        </div>
+                        <div class="flex items-center space-x-2.5">
+                            <i class="fas fa-check-circle text-brand-accent"></i>
+                            <span class="text-sm text-gray-300">Web Development Static (Modern Stack)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 px-6 max-w-7xl mx-auto">
+        <!-- Section Header -->
+        <div class="flex flex-col items-center text-center space-y-4 mb-16 reveal">
+            <div class="flex items-center space-x-3">
+                <span class="h-[2px] w-8 bg-brand-accent"></span>
+                <span class="text-brand-accent uppercase tracking-widest text-sm font-semibold">Portofolio</span>
+                <span class="h-[2px] w-8 bg-brand-accent"></span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white">Karya Kreatif Unggulan</h2>
+            <p class="text-gray-400 max-w-2xl">
+                Jelajahi berbagai projek terbaik yang telah saya selesaikan di berbagai bidang kreatif dan teknologi.
+            </p>
+
+            <!-- Portfolio Filter Controls -->
+            <div class="flex flex-wrap justify-center gap-2 pt-6">
+                <button class="portfolio-btn active px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 border border-brand-accent/20 bg-brand-accent text-brand-dark" data-filter="desain">
+                    Desain Grafis
+                </button>
+                <button class="portfolio-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 border border-white/5 bg-white/5 hover:bg-brand-accent/10 hover:border-brand-accent/20 text-gray-300 hover:text-white" data-filter="foto">
+                    Fotografi
+                </button>
+                <button class="portfolio-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 border border-white/5 bg-white/5 hover:bg-brand-accent/10 hover:border-brand-accent/20 text-gray-300 hover:text-white" data-filter="video">
+                    Broadcast
+                </button>
+                <button class="portfolio-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 border border-white/5 bg-white/5 hover:bg-brand-accent/10 hover:border-brand-accent/20 text-gray-300 hover:text-white" data-filter="web">
+                    Website
+                </button>
+            </div>
+        </div>
+
+        <!-- Portfolio Grid -->
+        <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+            
+            <!-- Item 1: Desain Grafis -->
+            <div class="portfolio-item glass-card rounded-2xl overflow-hidden group" data-category="desain">
+                <div class="relative overflow-hidden h-52 bg-slate-800">
+                    <img src="image/desain1.png" alt="Brand Identity EcoSphere" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <span class="text-xs bg-brand-accent text-brand-dark font-bold px-3 py-1 rounded-full">Desain Grafis</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white group-hover:text-brand-accent transition duration-300">Desain Post Instagram - Bootcamp</h3>
+                    <p class="text-gray-400 text-sm mt-2">Desain post instagram untuk bootcamp, dengan bantuan AI dan prompting yang detail agar generate gambar lebih terarah</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item glass-card rounded-2xl overflow-hidden group" data-category="desain">
+                <div class="relative overflow-hidden h-52 bg-slate-800">
+                    <img src="image/desain2.png" alt="Poster Soundwave" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <span class="text-xs bg-brand-accent text-brand-dark font-bold px-3 py-1 rounded-full">Desain Grafis</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white group-hover:text-brand-accent transition duration-300">Desain Post Instagram - Company</h3>
+                    <p class="text-gray-400 text-sm mt-2">Desain post instagram untuk company, dengan bantuan AI dan prompting yang detail agar generate gambar lebih terarah</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item glass-card rounded-2xl overflow-hidden group" data-category="desain">
+                <div class="relative overflow-hidden h-52 bg-slate-800">
+                    <img src="image/desain3.png" alt="Poster Soundwave" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <span class="text-xs bg-brand-accent text-brand-dark font-bold px-3 py-1 rounded-full">Desain Grafis</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white group-hover:text-brand-accent transition duration-300">Desain Post Instagram - Publikasi</h3>
+                    <p class="text-gray-400 text-sm mt-2">Desain post instagram untuk publikasi, dengan aplikasi simple seperti canva untuk desain post publikasi sosial media gereja</p>
+                </div>
+            </div>
+
+            <!-- Item 2: Fotografi -->
+            <div class="portfolio-item glass-card rounded-2xl overflow-hidden group" data-category="foto">
+                <div class="relative overflow-hidden h-52 bg-slate-800">
+                    <img src="image/foto1.JPG" alt="Sisi Lain Jakarta" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <span class="text-xs bg-brand-neon text-brand-dark font-bold px-3 py-1 rounded-full">Fotografi</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white group-hover:text-brand-neon transition duration-300">Event Gereja - Hari Keluarga Konfrater MSF</h3>
+                    <p class="text-gray-400 text-sm mt-2">Dokumentasi momen penuh sukacita, kehangatan, dan kebersamaan dalam perayaan Hari Keluarga Konfrater MSF.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item glass-card rounded-2xl overflow-hidden group" data-category="foto">
+                <div class="relative overflow-hidden h-52 bg-slate-800">
+                    <img src="image/foto2.JPG" alt="Sisi Lain Jakarta" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <span class="text-xs bg-brand-neon text-brand-dark font-bold px-3 py-1 rounded-full">Fotografi</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white group-hover:text-brand-neon transition duration-300">Event Paskah - Pawai Paskah Kota Semarang</h3>
+                    <p class="text-gray-400 text-sm mt-2">Menangkap momen penuh sukacita, kreativitas teatrikal, serta indahnya kebersamaan dalam keberagaman di sudut-sudut kota.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item glass-card rounded-2xl overflow-hidden group" data-category="foto">
+                <div class="relative overflow-hidden h-52 bg-slate-800">
+                    <img src="image/foto3.JPG" alt="Sisi Lain Jakarta" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <span class="text-xs bg-brand-neon text-brand-dark font-bold px-3 py-1 rounded-full">Fotografi</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white group-hover:text-brand-neon transition duration-300">Paskah - Malam Vigili Paskah</h3>
+                    <p class="text-gray-400 text-sm mt-2">Menangkap keindahan tradisi upacara cahaya, pendaran lilin Paskah, serta kedalaman iman umat dalam menyambut kebangkitan Kristus.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item glass-card rounded-2xl overflow-hidden group" data-category="foto">
+                <div class="relative overflow-hidden h-52 bg-slate-800">
+                    <img src="image/foto4.JPG" alt="Sisi Lain Jakarta" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <span class="text-xs bg-brand-neon text-brand-dark font-bold px-3 py-1 rounded-full">Fotografi</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white group-hover:text-brand-neon transition duration-300">Minggu Palma - Iring Iringan Daun Palma</h3>
+                    <p class="text-gray-400 text-sm mt-2">Menangkap lambaian hijau daun palem dari umat yang beriringan menyambut datangnya Pekan Suci dengan iman dan kedamaian.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item glass-card rounded-2xl overflow-hidden group" data-category="foto">
+                <div class="relative overflow-hidden h-52 bg-slate-800">
+                    <img src="image/foto5.jpeg" alt="Sisi Lain Jakarta" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <span class="text-xs bg-brand-neon text-brand-dark font-bold px-3 py-1 rounded-full">Fotografi</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white group-hover:text-brand-neon transition duration-300">Classic Yang Menggoda</h3>
+                    <p class="text-gray-400 text-sm mt-2">Menangkap pesona abadi dan karakter kuat dari sebuah mobil sedan klasik di tengah era modern.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item glass-card rounded-2xl overflow-hidden group" data-category="foto">
+                <div class="relative overflow-hidden h-52 bg-slate-800">
+                    <img src="image/foto6.jpeg" alt="Sisi Lain Jakarta" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <span class="text-xs bg-brand-neon text-brand-dark font-bold px-3 py-1 rounded-full">Fotografi</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white group-hover:text-brand-neon transition duration-300">Teras Rumah - Sore Yang Syahdu</h3>
+                    <p class="text-gray-400 text-sm mt-2">Mengabadikan sudut teras rumah di kala senja yang menghadirkan suasana tenang dan syahdu.</p>
+                </div>
+            </div>
+
+            <!-- Item 3: Broadcast -->
+            <div class="portfolio-item glass-card rounded-2xl overflow-hidden group" data-category="video">
+                <div class="relative overflow-hidden h-52 bg-slate-800">
+                    <img src="image/BCas1.jpeg" alt="Cinematic Bali" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <span class="text-xs bg-brand-accent text-brand-dark font-bold px-3 py-1 rounded-full">Broadcast</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white group-hover:text-brand-accent transition duration-300">Broadcast Control Room</h3>
+                    <p class="text-gray-400 text-sm mt-2">Management bandwith dan composing kamera dengan direct atem di MCR ke BCR dengan NDI melalui koneksi LAN</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item glass-card rounded-2xl overflow-hidden group" data-category="video">
+                <div class="relative overflow-hidden h-52 bg-slate-800">
+                    <img src="image/BCas2.jpeg" alt="Cinematic Bali" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <span class="text-xs bg-brand-accent text-brand-dark font-bold px-3 py-1 rounded-full">Broadcast</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white group-hover:text-brand-accent transition duration-300">Master Control Room</h3>
+                    <p class="text-gray-400 text-sm mt-2">Setup VMIX, ProPresenter, Atem Switcher Camera, NDI, dan Bandwith management untuk streaming</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item glass-card rounded-2xl overflow-hidden group" data-category="video">
+                <div class="relative overflow-hidden h-52 bg-slate-800">
+                    <img src="image/BCas3.jpeg" alt="Cinematic Bali" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <span class="text-xs bg-brand-accent text-brand-dark font-bold px-3 py-1 rounded-full">Broadcast</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white group-hover:text-brand-accent transition duration-300">Editing PostPro Cinematic Movie Paskah</h3>
+                    <p class="text-gray-400 text-sm mt-2">Editing dan mastering file dari produksi video visualisasi pada paskah</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item glass-card rounded-2xl overflow-hidden group" data-category="video">
+                <div class="relative overflow-hidden h-52 bg-slate-800">
+                    <img src="image/BCas4.jpeg" alt="Cinematic Bali" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <span class="text-xs bg-brand-accent text-brand-dark font-bold px-3 py-1 rounded-full">Broadcast</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white group-hover:text-brand-accent transition duration-300">Setup Kamera Mobile & Configuration Atem</h3>
+                    <p class="text-gray-400 text-sm mt-2">Setup kamera sampai konfigurasi atem untuk live kamera ibadah</p>
+                </div>
+            </div>
+
+            <!-- Item 4: Website -->
+            <div class="portfolio-item glass-card rounded-2xl overflow-hidden group" data-category="web">
+                <div class="relative overflow-hidden h-52 bg-slate-800">
+                    <img src="image/web1.png" alt="E-Commerce LokalKarya" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <span class="text-xs bg-brand-neon text-brand-dark font-bold px-3 py-1 rounded-full">Website</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white group-hover:text-brand-neon transition duration-300">Management Pribadi</h3>
+                    <p class="text-gray-400 text-sm mt-2">Build website dinamis manager pribadi berbasis apps script yang mengatur keuangan, hutang, aset, rab, laporan. Dengan sistem login beberapa user yang bisa di custom untuk aksesnya.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item glass-card rounded-2xl overflow-hidden group" data-category="web">
+                <div class="relative overflow-hidden h-52 bg-slate-800">
+                    <img src="image/web2.png" alt="E-Commerce LokalKarya" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <span class="text-xs bg-brand-neon text-brand-dark font-bold px-3 py-1 rounded-full">Website</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white group-hover:text-brand-neon transition duration-300">Management Bisnis Freelance</h3>
+                    <p class="text-gray-400 text-sm mt-2">Build website dinamis manager bisnis Freelance berbasis apps script yang mengatur keuangan, paket jasa, aset, absensi, laporan. Dengan sistem login beberapa user yang bisa di custom untuk aksesnya. Aplikasi ini sudah auto kalkulasi gaji untuk bisnis dengan sistem gaji selesai projek</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item glass-card rounded-2xl overflow-hidden group" data-category="web">
+                <div class="relative overflow-hidden h-52 bg-slate-800">
+                    <img src="image/web3.png" alt="E-Commerce LokalKarya" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <span class="text-xs bg-brand-neon text-brand-dark font-bold px-3 py-1 rounded-full">Website</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white group-hover:text-brand-neon transition duration-300">Website Statis Vendor Foto</h3>
+                    <p class="text-gray-400 text-sm mt-2">Website ini mengutamakan tampilan antarmuka (front-end) yang bersih, responsif, serta penataan galeri gambar yang estetik guna memaksimalkan presentasi portofolio visual kepada calon klien.</p> 
+                    <br>
+                    <a href="houseframe.my.id" class="text-base text-white hover:text-brand-accent font-semibold transition duration-300">Selengkapnya</a>
+                </div>
+            </div>
+
+            <div class="portfolio-item glass-card rounded-2xl overflow-hidden group" data-category="web">
+                <div class="relative overflow-hidden h-52 bg-slate-800">
+                    <img src="image/web4.png" alt="E-Commerce LokalKarya" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <span class="text-xs bg-brand-neon text-brand-dark font-bold px-3 py-1 rounded-full">Website</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-white group-hover:text-brand-neon transition duration-300">Website Portofolio Saya</h3>
+                    <p class="text-gray-400 text-sm mt-2">Website portofolio pribadi resmi yang berfungsi sebagai galeri digital interaktif untuk merangkum karya terbaik</p> 
+                    <a href="vadigitalcreative.my.id" class="text-base text-white hover:text-brand-accent font-semibold transition duration-300">Selengkapnya</a>
+                </div>
+            </div>    
+
+        </div>
+    </section>
+
+    <!-- Experience & Freelance Section -->
+    <section id="experience" class="py-24 px-6 bg-brand-card/20 relative">
+        <div class="absolute top-1/2 left-10 w-80 h-80 bg-brand-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto">
+            <div class="flex flex-col items-center text-center space-y-4 mb-16 reveal">
+                <div class="flex items-center space-x-3">
+                    <span class="h-[2px] w-8 bg-brand-accent"></span>
+                    <span class="text-brand-accent uppercase tracking-widest text-sm font-semibold">Riwayat Karir</span>
+                    <span class="h-[2px] w-8 bg-brand-accent"></span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white">Pengalaman Bekerja</h2>
+                <p class="text-gray-400">
+                    Jejak langkah profesional dan proyek lepas (freelance) dalam beberapa tahun terakhir.
+                </p>
+            </div>
+
+            <div class="relative border-l-2 border-brand-accent/30 ml-4 md:ml-32 space-y-12 reveal">
+                
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="md:absolute md:right-full md:mr-12 md:top-1.5 md:text-right mb-2 md:mb-0">
+                        <span class="text-sm font-extrabold text-brand-accent bg-brand-accent/10 md:bg-transparent px-3 py-1 rounded-full md:p-0">
+                            2021
+                        </span>
+                    </div>
+                    <div class="absolute left-0 top-1.5 -translate-x-[9px] w-4 h-4 rounded-full bg-brand-accent border-4 border-brand-dark group-hover:scale-125 transition duration-300"></div>
+                    <div class="p-6 rounded-2xl bg-brand-card border border-white/5 shadow-xl">
+                        <span class="text-xs text-brand-accent font-bold tracking-widest uppercase">Freelancer</span>
+                        <h3 class="text-xl font-bold text-white mt-1">Direct Of Photograph & Editor</h3>
+                        <p class="text-sm font-semibold text-gray-400 mt-1">Padepokan Ilir - Ilir</p>
+                        <p class="text-gray-400 text-sm mt-3 leading-relaxed">
+                            Menata gambar untuk kebutuhan film lokal pada kampung wisata di Gunungpati Semarang. Menyetting kamera untuk menentukan gambar dengan emosional tertentu dan menyunting hasil take menjadi video yang nyaman dan membawa emosional penonton.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="md:absolute md:right-full md:mr-12 md:top-1.5 md:text-right mb-2 md:mb-0">
+                        <span class="text-sm font-extrabold text-gray-400 bg-white/5 md:bg-transparent px-3 py-1 rounded-full md:p-0">
+                            2022 - 2023
+                        </span>
+                    </div>
+                    <div class="absolute left-0 top-1.5 -translate-x-[9px] w-4 h-4 rounded-full bg-gray-500 border-4 border-brand-dark group-hover:scale-125 transition duration-300"></div>
+                    <div class="p-6 rounded-2xl bg-brand-card border border-white/5 shadow-xl">
+                        <span class="text-xs text-brand-neon font-bold tracking-widest uppercase">Freelancer</span>
+                        <h3 class="text-xl font-bold text-white mt-1">Creative Freelancer (Desain & Foto)</h3>
+                        <p class="text-sm font-semibold text-gray-400 mt-1">Craft Project</p>
+                        <p class="text-gray-400 text-sm mt-3 leading-relaxed">
+                            Membuat ide foto yang menarik untuk foto katalog kelulusan sekolah, produk, company. Mengedit hasil foto yang diambil sampai mendesain menjadi karya digital yang menarik untuk di publikasikan.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="md:absolute md:right-full md:mr-12 md:top-1.5 md:text-right mb-2 md:mb-0">
+                        <span class="text-sm font-extrabold text-gray-400 bg-white/5 md:bg-transparent px-3 py-1 rounded-full md:p-0">
+                            2023 - Sekarang
+                        </span>
+                    </div>
+                    <div class="absolute left-0 top-1.5 -translate-x-[9px] w-4 h-4 rounded-full bg-gray-500 border-4 border-brand-dark group-hover:scale-125 transition duration-300"></div>
+                    <div class="p-6 rounded-2xl bg-brand-card border border-white/5 shadow-xl">
+                        <span class="text-xs text-gray-400 font-bold tracking-widest uppercase">Fulltime Position</span>
+                        <h3 class="text-xl font-bold text-white mt-1">Digital Marketing</h3>
+                        <p class="text-sm font-semibold text-gray-400 mt-1">Labha.id</p>
+                        <p class="text-gray-400 text-sm mt-3 leading-relaxed">
+                           Merancang dan memproduksi aset visual kreatif, Menyusun rencana konten (content planning) serta menulis teks takar (copywriting/caption), Mengelola, menjadwalkan, dan mengoptimalkan seluruh saluran media sosial, Melakukan pembaruan konten, artikel, informasi produk, serta elemen visual pada website, Memastikan tampilan antarmuka (front-end) website tetap responsif, menarik, dan berfungsi dengan baik.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="md:absolute md:right-full md:mr-12 md:top-1.5 md:text-right mb-2 md:mb-0">
+                        <span class="text-sm font-extrabold text-gray-400 bg-white/5 md:bg-transparent px-3 py-1 rounded-full md:p-0">
+                            2025 - Sekarang
+                        </span>
+                    </div>
+                    <div class="absolute left-0 top-1.5 -translate-x-[9px] w-4 h-4 rounded-full bg-gray-500 border-4 border-brand-dark group-hover:scale-125 transition duration-300"></div>
+                    <div class="p-6 rounded-2xl bg-brand-card border border-white/5 shadow-xl">
+                        <span class="text-xs text-gray-400 font-bold tracking-widest uppercase">Freelance</span>
+                        <h3 class="text-xl font-bold text-white mt-1">Broadcasting</h3>
+                        <p class="text-sm font-semibold text-gray-400 mt-1">AVISA Production</p>
+                        <p class="text-gray-400 text-sm mt-3 leading-relaxed">
+                           Mengelola seluruh infrastruktur teknis dan sistem penyiaran live streaming untuk memastikan stabilitas koneksi dan zero-downtime selama siaran berlangsung, Bertindak sebagai visual switcher operator yang bertanggung jawab penuh atas transisi multi-kamera dan penayangan aset grafis secara real-time, Mengoperasikan kamera broadcast profesional dengan presisi tinggi untuk menghasilkan pergerakan gambar yang sinematik, fokus, dan informatif, Merancang aset desain grafis multimedia khusus untuk kebutuhan overlay visual siaran langsung guna meningkatkan nilai estetika produksi.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 max-w-7xl mx-auto relative">
+        <div class="absolute bottom-0 right-10 w-96 h-96 bg-brand-neon/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <!-- Left Info Panel -->
+            <div class="lg:col-span-5 flex flex-col space-y-8 reveal">
+                <div class="flex items-center space-x-3">
+                    <span class="h-[2px] w-8 bg-brand-accent"></span>
+                    <span class="text-brand-accent uppercase tracking-widest text-sm font-semibold">Kontak Saya</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white">Mulai Kolaborasi Hebat Kita</h2>
+                <p class="text-gray-400">
+                    Ada ide proyek yang ingin dikembangkan atau sekedar berdiskusi tentang peluang bisnis? Jangan ragu untuk mengirim pesan kepada saya.
+                </p>
+
+                <!-- Actionable contact details -->
+                <div class="flex flex-col space-y-6">
+                    <div class="flex items-center space-x-4 group">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-card border border-white/5 flex items-center justify-center text-brand-accent text-xl group-hover:bg-brand-accent group-hover:text-brand-dark transition duration-300">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400 block">Kirim Surat Elektronik</span>
+                            <a href="mailto:alvin@vadigitalcreative.my.id" class="text-base text-white hover:text-brand-accent font-semibold transition duration-300">vinard@vadigitalcreative.my.id</a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4 group">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-card border border-white/5 flex items-center justify-center text-brand-accent text-xl group-hover:bg-brand-accent group-hover:text-brand-dark transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400 block">Kunjungi Media Sosial</span>
+                            <a href="https://instagram.com/vin.ard" target="_blank" rel="noopener noreferrer" class="text-base text-white hover:text-brand-accent font-semibold transition duration-300">@vin.ard</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4 group">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-card border border-white/5 flex items-center justify-center text-brand-accent text-xl group-hover:bg-brand-accent group-hover:text-brand-dark transition duration-300">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400 block">Jejaring Profesional</span>
+                            <a target="_blank" rel="noopener noreferrer" class="text-base text-white hover:text-brand-accent font-semibold transition duration-300">Alvin Ardian</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Form Panel -->
+            <div class="lg:col-span-7 reveal">
+                <form id="contact-form" class="p-8 sm:p-10 rounded-3xl bg-brand-card border border-white/5 shadow-2xl space-y-6">
+                    <!-- Baris 1: Nama & Email -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex flex-col space-y-2">
+                            <label for="name" class="text-sm font-semibold text-gray-300">Nama Lengkap</label>
+                            <input type="text" id="name" name="from_name" required class="w-full px-5 py-3.5 rounded-xl bg-brand-dark border border-white/10 text-white focus:outline-none focus:border-brand-accent transition duration-300 text-sm" placeholder="Nama Anda">
+                        </div>
+                        <div class="flex flex-col space-y-2">
+                            <label for="email" class="text-sm font-semibold text-gray-300">Alamat Email</label>
+                            <input type="email" id="email" name="reply_to" required class="w-full px-5 py-3.5 rounded-xl bg-brand-dark border border-white/10 text-white focus:outline-none focus:border-brand-accent transition duration-300 text-sm" placeholder="anda@email.com">
+                        </div>
+                    </div>
+
+                    <!-- Baris 2: Subjek & No. Telpon / WA (Grid Baru) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex flex-col space-y-2">
+                            <label for="subject" class="text-sm font-semibold text-gray-300">Subjek</label>
+                            <input type="text" id="subject" name="subject" required class="w-full px-5 py-3.5 rounded-xl bg-brand-dark border border-white/10 text-white focus:outline-none focus:border-brand-accent transition duration-300 text-sm" placeholder="Kerjasama Projek, Jasa Kreatif, dll.">
+                        </div>
+                        <div class="flex flex-col space-y-2">
+                            <label for="phone" class="text-sm font-semibold text-gray-300">No. Telepon / WA</label>
+                            <!-- Input type="tel" khusus untuk nomor telepon -->
+                            <input type="tel" id="phone" name="phone_number" required class="w-full px-5 py-3.5 rounded-xl bg-brand-dark border border-white/10 text-white focus:outline-none focus:border-brand-accent transition duration-300 text-sm" placeholder="08xxxxxxxxxx">
+                        </div>
+                    </div>
+
+                    <!-- Baris 3: Pesan -->
+                    <div class="flex flex-col space-y-2">
+                        <label for="message" class="text-sm font-semibold text-gray-300">Pesan</label>
+                        <textarea id="message" name="message" rows="5" required class="w-full px-5 py-3.5 rounded-xl bg-brand-dark border border-white/10 text-white focus:outline-none focus:border-brand-accent transition duration-300 text-sm resize-none" placeholder="Tuliskan detail ide Anda disini..."></textarea>
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-accent to-brand-neon text-brand-dark font-extrabold hover:shadow-lg hover:shadow-brand-accent/20 transition duration-300 flex items-center justify-center space-x-2">
+                        <span id="btn-text">Kirim Pesan Sekarang</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Toast Notification System (Instead of alert()) -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 ease-out flex items-center space-x-3 bg-brand-card border border-brand-accent/30 p-4 rounded-2xl shadow-2xl">
+        <div class="w-10 h-10 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent text-lg">
+            <i class="fas fa-check"></i>
+        </div>
+        <div>
+            <h4 class="font-bold text-white text-sm">Pesan Berhasil Terkirim!</h4>
+            <p class="text-xs text-gray-400">Saya akan segera menghubungi Anda.</p>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="btn-top" class="fixed bottom-6 left-6 z-40 w-12 h-12 rounded-full bg-brand-card border border-white/10 text-white flex items-center justify-center hover:text-brand-accent hover:border-brand-accent/30 shadow-lg transform translate-y-24 opacity-0 transition-all duration-300 focus:outline-none" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark border-t border-white/5 py-16 px-6 relative">
+        <div class="max-w-7xl mx-auto flex flex-col items-center space-y-10">
+            
+            <!-- Branding logo & summary -->
+            <div class="text-center space-y-4 max-w-lg">
+                <a href="#home" class="text-3xl font-extrabold tracking-wider bg-gradient-to-r from-brand-accent to-brand-neon bg-clip-text text-transparent">
+                    Alvin Ardian<span class="text-white">.</span>
+                </a>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Membantu jenama & industri mengekspresikan karakter terbaik mereka melalui sinergi media digital visual dan fungsionalitas teknologi handal.
+                </p>
+            </div>
+
+            <!-- Fast links -->
+            <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
+                <a href="#home" class="hover:text-brand-accent transition duration-300">Beranda</a>
+                <a href="#about" class="hover:text-brand-accent transition duration-300">Tentang</a>
+                <a href="#portfolio" class="hover:text-brand-accent transition duration-300">Portofolio</a>
+                <a href="#experience" class="hover:text-brand-accent transition duration-300">Pengalaman</a>
+                <a href="#contact" class="hover:text-brand-accent transition duration-300">Kontak</a>
+            </div>
+
+            <!-- Social circles -->
+            <div class="flex space-x-4">
+                <a href="mailto:alvin@vadigitalcreative.my.id" class="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-accent text-white hover:text-brand-dark flex items-center justify-center transition duration-300 border border-white/5" aria-label="Email">
+                    <i class="fas fa-envelope text-sm"></i>
+                </a>
+                <a href="https://www.instagram.com/vin.ard" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-accent text-white hover:text-brand-dark flex items-center justify-center transition duration-300 border border-white/5" aria-label="Instagram">
+                    <i class="fab fa-instagram text-sm"></i>
+                </a>
+                <a target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-accent text-white hover:text-brand-dark flex items-center justify-center transition duration-300 border border-white/5" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin text-sm"></i>
+                </a>
+            </div>
+
+            <!-- Divider & Copyright -->
+            <div class="w-full border-t border-white/5 pt-8 text-center flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+                <span>&copy; <span id="year">2026</span> vin.ard - All rights reserved.</span>
+                <span class="flex items-center space-x-1">
+                    <span>follow me</span>
+                    <i class="fas fa-heart text-red-500 animate-pulse"></i>
+                    <span>@vin.ard</span>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Scripts -->
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        // --- 1. Responsive Drawer Mobile Navigation ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileCloseBtn = document.getElementById('mobile-close-btn');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function openDrawer() {
+            mobileDrawer.classList.remove('-translate-y-full');
+        }
+
+        function closeDrawer() {
+            mobileDrawer.classList.add('-translate-y-full');
+        }
+
+        mobileMenuBtn.addEventListener('click', openDrawer);
+        mobileCloseBtn.addEventListener('click', closeDrawer);
+        mobileLinks.forEach(link => link.addEventListener('click', closeDrawer));
+
+        // --- 2. Portfolio Project Filter Logic ---
+        const filterBtns = document.querySelectorAll('.portfolio-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state class on buttons
+                filterBtns.forEach(item => {
+                    item.classList.remove('active', 'bg-brand-accent', 'text-brand-dark');
+                    item.classList.add('border-white/5', 'bg-white/5', 'text-gray-300');
+                });
+                btn.classList.add('active', 'bg-brand-accent', 'text-brand-dark');
+                btn.classList.remove('border-white/5', 'bg-white/5', 'text-gray-300');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                // Filter Animation
+                portfolioItems.forEach(item => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.95)';
+                    
+                    setTimeout(() => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 50);
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    }, 300);
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+        const defaultBtn = document.querySelector('.portfolio-btn[data-filter="desain"]');
+        if (defaultBtn) {
+            // Sembunyikan item lain secara instan sebelum animasi berjalan pertama kali
+            portfolioItems.forEach(item => {
+                if (item.getAttribute('data-category') !== 'desain') {
+                    item.style.display = 'none';
+                    item.style.opacity = '0';
+                }
+            });
+        }
+    });
+
+        // --- 3. Scroll Reveal Animation Logic ---
+        const reveals = document.querySelectorAll('.reveal');
+
+        function checkReveal() {
+            const triggerBottom = window.innerHeight * 0.85;
+            
+            reveals.forEach(reveal => {
+                const revealTop = reveal.getBoundingClientRect().top;
+                
+                if (revealTop < triggerBottom) {
+                    reveal.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkReveal);
+        // Initial check on load
+        window.addEventListener('load', checkReveal);
+
+        // --- 4. Back To Top Button & Header Scroll Styling ---
+        const btnTop = document.getElementById('btn-top');
+        const navBar = document.querySelector('nav');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                // Show back to top button
+                btnTop.classList.remove('translate-y-24', 'opacity-0');
+                btnTop.classList.add('translate-y-0', 'opacity-100');
+            } else {
+                // Hide back to top button
+                btnTop.classList.add('translate-y-24', 'opacity-0');
+                btnTop.classList.remove('translate-y-0', 'opacity-100');
+            }
+
+            if (window.scrollY > 50) {
+                navBar.classList.add('py-2', 'shadow-2xl');
+                navBar.classList.remove('py-4');
+            } else {
+                navBar.classList.remove('py-2', 'shadow-2xl');
+                navBar.classList.add('py-4');
+            }
+        });
+
+        btnTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // --- 5. Interactive Mock Form Submission & Toast ---
+        document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('contact-form');
+    const toast = document.getElementById('toast');
+    
+    // Ambil elemen internal toast jika ada untuk manipulasi pesan dinamis
+    const toastTitle = toast ? toast.querySelector('h4') : null;
+    const toastDesc = toast ? toast.querySelector('p') : null;
+    const toastIcon = toast ? toast.querySelector('i') : null;
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Menghentikan reload halaman browser
+
+            const submitBtn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+            
+            // Jaga-jaga jika tombol sedang dalam proses pengiriman
+            if (submitBtn.disabled) return;
+
+            // Efek Visual Menunggu (Loading state)
+            submitBtn.disabled = true;
+            if (btnText) btnText.textContent = "Mengirim...";
+            const iconBtn = submitBtn.querySelector('.fas');
+            if (iconBtn) iconBtn.className = "fas fa-circle-notch animate-spin";
+
+            // Eksekusi pengiriman formulir ke EmailJS
+            // Ganti 'YOUR_SERVICE_ID' dan 'YOUR_TEMPLATE_ID' sesuai dashboard Anda
+            emailjs.sendForm('service_gor9a4f', 'template_orifdiy', this)
+                .then(() => {
+                    // Jika Sukses: Atur notifikasi menjadi hijau/sukses
+                    if (toastTitle) toastTitle.textContent = "Pesan Berhasil Terkirim!";
+                    if (toastDesc) toastDesc.textContent = "Saya akan segera menghubungi Anda.";
+                    if (toast) {
+                        toast.classList.remove('border-red-500/30');
+                        toast.classList.add('border-brand-accent/30');
+                    }
+                    if (toastIcon) toastIcon.className = "fas fa-check text-brand-accent";
+                    
+                    // Bersihkan seluruh field input form
+                    contactForm.reset();
+                })
+                .catch((error) => {
+                    console.error('EmailJS Error:', error);
+                    // Jika Gagal: Atur notifikasi menjadi merah/gagal
+                    if (toastTitle) toastTitle.textContent = "Gagal Mengirim Pesan";
+                    if (toastDesc) toastDesc.textContent = "Terjadi gangguan sistem, coba beberapa saat lagi.";
+                    if (toast) {
+                        toast.classList.remove('border-brand-accent/30');
+                        toast.classList.add('border-red-500/30');
+                    }
+                    if (toastIcon) toastIcon.className = "fas fa-times text-red-500";
+                })
+                .finally(() => {
+                    // Kembalikan status tombol kirim ke kondisi normal semula
+                    submitBtn.disabled = false;
+                    if (btnText) btnText.textContent = "Kirim Pesan Sekarang";
+                    if (iconBtn) iconBtn.className = "fas fa-paper-plane";
+
+                    // Munculkan sistem Toast dari bawah layar
+                    if (toast) {
+                        toast.classList.remove('translate-y-24', 'opacity-0');
+                        toast.classList.add('translate-y-0', 'opacity-100');
+
+                        // Sembunyikan otomatis Toast setelah durasi 4 detik
+                        setTimeout(() => {
+                            toast.classList.add('translate-y-24', 'opacity-0');
+                            toast.classList.remove('translate-y-0', 'opacity-100');
+                        }, 4000);
+                    }
+                });
+        });
+    }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("portfolio-modal");
+    const modalImg = document.getElementById("modal-img");
+    const modalTitle = document.getElementById("modal-title");
+    const modalClose = document.getElementById("modal-close");
+    const portfolioItems = document.querySelectorAll(".portfolio-item");
+
+    // Fungsi membuka modal
+    portfolioItems.forEach(item => {
+        item.addEventListener("click", (e) => {
+            // Mengambil data dari element yang diklik
+            const imgEl = item.querySelector("img");
+            const titleEl = item.querySelector("h3");
+
+            if (imgEl) {
+                modalImg.src = imgEl.src;
+                modalImg.alt = imgEl.alt;
+                modalTitle.textContent = titleEl ? titleEl.textContent : "";
+
+                // Membuka modal dengan transisi smooth
+                modal.classList.remove("opacity-0", "pointer-events-none");
+                setTimeout(() => {
+                    modalImg.classList.remove("scale-95");
+                }, 50);
+            }
+        });
+    });
+
+    // Fungsi menutup modal
+    const closeModal = () => {
+        modal.classList.add("opacity-0", "pointer-events-none");
+        modalImg.classList.add("scale-95");
+        // Reset src setelah transisi selesai agar tidak berkedip saat dibuka lagi
+        setTimeout(() => {
+            modalImg.src = "";
+        }, 300);
+    };
+
+    // Tutup saat tombol X diklik
+    modalClose.addEventListener("click", closeModal);
+
+    // Tutup saat area hitam di luar gambar diklik
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Tutup menggunakan tombol Escape di keyboard
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !modal.classList.contains("opacity-0")) {
+            closeModal();
+        }
+    });
+});
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mencegah klik kanan pada semua gambar
+            document.querySelectorAll('img').forEach(img => {
+                img.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                });
+            });
+        });
+    </script>
+
+    <div id="portfolio-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <button id="modal-close" class="absolute top-6 right-6 text-white/70 hover:text-white text-3xl transition-colors focus:outline-none">&times;</button>
+        
+        <div class="max-w-4xl max-h-[85vh] p-4 flex flex-col items-center">
+            <img id="modal-img" src="" alt="Preview" class="max-w-full max-h-[75vh] object-contain rounded-lg shadow-2xl transform scale-95 transition-transform duration-300">
+            <h3 id="modal-title" class="text-white text-xl font-bold mt-4 text-center"></h3>
+        </div>
+    </div>
+
+</body>
+</html>
