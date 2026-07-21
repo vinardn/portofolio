@@ -6,6 +6,30 @@
     <title>Alvin Ardian | Extended Gallery</title>
     <link rel="icon" type="image/x-icon" href="logo/logo-va.png" />
   </head>
+  <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Menghilangkan scrollbar di halaman utama */
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+          
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+
+        /* Iframe otomatis mengambil sisa ruang di atas footer */
+        iframe {
+            display: block;
+            width: 100%;
+            flex-grow: 1; 
+            border: none;
+        }
+    </style>
   <body>
     <iframe src="https://script.google.com/macros/s/AKfycbw08qhaX6IVCiKbj9GU9KSmIF1wXGBaePUv4cPaXcWwAdvUTj2FXEEEcZcKcUWkbmMC/exec" 
             title="Gallery"
