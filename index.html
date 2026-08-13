@@ -638,6 +638,76 @@
         document.getElementById("portfolio-modal").classList.add("opacity-0", "pointer-events-none");
       });
 
+      // --- LOGIKA TOAST NOTIFICATION MODERN ---
+function showToast(title, message, isSuccess = true) {
+  const toast = document.getElementById("toast-notification");
+  const toastTitle = document.getElementById("toast-title");
+  const toastMessage = document.getElementById("toast-message");
+  const toastIcon = document.getElementById("toast-icon");
+  const toastIconBg = document.getElementById("toast-icon-bg");
+
+  if (!toast) return;
+
+  // Set Konten Teks
+  toastTitle.textContent = title;
+  toastMessage.textContent = message;
+
+  // Styling berdasarkan Status (Sukses / Gagal)
+  if (isSuccess) {
+    toastIcon.className = "fas fa-check text-sm";
+    toastIconBg.className = "w-10 h-10 rounded-xl bg-ui-indigo/10 text-ui-indigo flex items-center justify-center shrink-0";
+  } else {
+    toastIcon.className = "fas fa-exclamation-triangle text-sm";
+    toastIconBg.className = "w-10 h-10 rounded-xl bg-red-500/10 text-red-500 flex items-center justify-center shrink-0";
+  }
+
+  // Munculkan Toast (Slide Up & Fade In)
+  toast.classList.remove("translate-y-24", "opacity-0", "pointer-events-none");
+
+  // Sembunyikan Otomatis Setelah 4 Detik
+  setTimeout(() => {
+    toast.classList.add("translate-y-24", "opacity-0", "pointer-events-none");
+  }, 4000);
+}
+
+        // --- EMAILJS SUBMIT HANDLER ---
+        const contactForm = document.getElementById("contact-form");
+        if (contactForm) {
+          contactForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById("submit-btn");
+            const btnText = document.getElementById("btn-text");
+
+            submitBtn.disabled = true;
+            if (btnText) btnText.textContent = "Mengirim Pesan...";
+
+            emailjs.sendForm("service_gor9a4f", "template_orifdiy", this)
+              .then(() => {
+                // Panggil Toast Pop-up Elegan (Sukses)
+                showToast(
+                  "Pesan Terkirim!", 
+                  "Terima kasih! Pesan Anda telah berhasil diterima.", 
+                  true
+                );
+                this.reset();
+              })
+              .catch((err) => {
+                console.error("EmailJS Error:", err);
+                // Panggil Toast Pop-up Elegan (Gagal)
+                showToast(
+                  "Gagal Mengirim", 
+                  "Terjadi kendala. Silakan coba lagi atau kirim via email langsung.", 
+                  false
+                );
+              })
+              .finally(() => {
+                submitBtn.disabled = false;
+                if (btnText) btnText.textContent = "Kirim Pesan Sekarang";
+              });
+          });
+        }
+
       // Anti Right Click
       document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll("img").forEach(img => {
@@ -650,5 +720,22 @@
         fetchCMSPortfolio();
       };
     </script>
+
+    <!-- Toast Notification Modern (Melayang di Bawah Kanan) -->
+    <div 
+      id="toast-notification" 
+      class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-500 ease-out flex items-center space-x-3.5 bg-white/95 backdrop-blur-md border border-gray-200/80 p-4 rounded-2xl shadow-2xl max-w-sm"
+    >
+      <!-- Icon Container -->
+      <div id="toast-icon-bg" class="w-10 h-10 rounded-xl bg-ui-indigo/10 flex items-center justify-center text-ui-indigo shrink-0">
+        <i id="toast-icon" class="fas fa-check text-sm"></i>
+      </div>
+      
+      <!-- Text Container -->
+      <div class="pr-2">
+        <h4 id="toast-title" class="font-bold text-ui-dark text-xs sm:text-sm">Pesan Terkirim!</h4>
+        <p id="toast-message" class="text-[11px] sm:text-xs text-ui-muted mt-0.5 leading-snug">Terima kasih, pesan Anda telah berhasil dikirimkan.</p>
+      </div>
+    </div>
   </body>
 </html>
