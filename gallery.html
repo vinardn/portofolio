@@ -1,39 +1,167 @@
 <!doctype html>
 <html lang="id" class="scroll-smooth">
   <head>
+    <meta name="description" content="Galeri Portofolio Fotografi Alvin Ardian (vin.ard)." />
+    <meta name="robots" content="index, follow" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alvin Ardian | Extended Gallery</title>
-    <link rel="icon" type="image/x-icon" href="logo/logo-va.png" />
-  </head>
-  <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden; /* Menghilangkan scrollbar di halaman utama */
-            background-color: #ffffff;
-            display: flex;
-            flex-direction: column;
-          
-        @keyframes pulse {
-            0% { transform: scale(0.95); opacity: 0.7; }
-            50% { transform: scale(1.05); opacity: 1; }
-            100% { transform: scale(0.95); opacity: 0.7; }
-        }
+    <title>Galeri Fotografi | Alvin Ardian</title>
+    <link rel="icon" type="image/x-icon" href="image/logo-va.png" />
 
-        /* Iframe otomatis mengambil sisa ruang di atas footer */
-        iframe {
-            display: block;
-            width: 100%;
-            flex-grow: 1; 
-            border: none;
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['"Plus Jakarta Sans"', "sans-serif"] },
+            colors: {
+              ui: { bg: "#F4F5F9", canvas: "#FFFFFF", dark: "#0F1117", indigo: "#5B51D8", violet: "#7C3AED", text: "#1E2229", muted: "#6B7280" }
+            },
+            boxShadow: { soft: "0 20px 40px -15px rgba(0, 0, 0, 0.05)", card: "0 10px 30px -5px rgba(0, 0, 0, 0.04)", glow: "0 0 30px rgba(91, 81, 216, 0.25)" }
+          }
         }
+      };
+    </script>
+    <style>
+      img { -webkit-user-select: none; user-select: none; -webkit-user-drag: none; }
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #f4f5f9; }
+      ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+      .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); }
     </style>
-  <body>
-    <iframe src="https://script.google.com/macros/s/AKfycbw08qhaX6IVCiKbj9GU9KSmIF1wXGBaePUv4cPaXcWwAdvUTj2FXEEEcZcKcUWkbmMC/exec" 
-            title="Gallery"
-            >
-    </iframe>
+  </head>
+  <body class="bg-ui-bg text-ui-text font-sans antialiased min-h-screen">
+    <div class="max-w-[1440px] mx-auto bg-ui-canvas md:my-6 md:rounded-3xl lg:rounded-4xl md:shadow-2xl overflow-hidden border-0 md:border border-gray-200/60 relative min-h-screen flex flex-col justify-between">
+      
+      <!-- Navbar -->
+      <nav class="sticky top-0 z-40 glass-nav border-b border-gray-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 h-16 sm:h-20 flex items-center justify-between">
+          <a href="index.html" class="text-xl sm:text-2xl font-extrabold tracking-tight text-ui-dark">Alvin Ardian<span class="text-ui-indigo">.</span></a>
+          <a href="index.html" class="inline-flex items-center space-x-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-ui-dark hover:bg-ui-indigo text-white font-semibold text-xs sm:text-sm transition-all duration-300 shadow-md">
+            <i class="fas fa-arrow-left text-xs"></i>
+            <span>Kembali ke Beranda</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Main Gallery Section -->
+      <main class="py-8 sm:py-12 px-4 sm:px-8 max-w-7xl mx-auto w-full flex-grow">
+        <div class="text-center max-w-3xl mx-auto space-y-3 mb-10">
+          <span class="text-xs font-bold uppercase tracking-widest text-ui-indigo block">Visual Archive</span>
+          <h1 class="text-3xl sm:text-5xl font-extrabold text-ui-dark tracking-tight">Galeri Foto Lengkap</h1>
+          <p class="text-xs sm:text-base text-ui-muted leading-relaxed">Eksplorasi seluruh karya fotografi berdasarkan momen, konsep, dan cerita di balik setiap sudut tangkapan lensa.</p>
+
+          <!-- Follow IG Button -->
+          <div class="pt-2">
+            <a href="https://instagram.com/vin.ard" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-rose-500/10 text-pink-600 border border-pink-500/20 text-xs sm:text-sm font-bold hover:bg-pink-500 hover:text-white transition-all duration-300 shadow-sm">
+              <i class="fab fa-instagram"></i>
+              <span>Follow Instagram @vin.ard</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Dynamic Photo Grid Container -->
+        <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 min-h-[400px]">
+          <div class="col-span-full text-center py-16 text-ui-muted">
+            <i class="fas fa-circle-notch animate-spin text-2xl text-ui-indigo mb-2"></i>
+            <p class="text-xs font-semibold">Memuat Gambar</p>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="py-8 px-4 border-t border-gray-200/60 text-center text-xs text-ui-muted flex flex-col sm:flex-row items-center justify-between max-w-7xl mx-auto w-full gap-3">
+        <p>&copy; <span id="year">2026</span> Alvin Ardian (vin.ard) — All rights reserved.</p>
+        <a href="https://instagram.com/vin.ard" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-1.5 text-pink-600 font-bold hover:underline">
+          <i class="fab fa-instagram"></i>
+          <span>Follow @vin.ard</span>
+        </a>
+      </footer>
+    </div>
+
+    <!-- Modal Lightbox Preview -->
+    <div id="portfolio-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+      <button id="modal-close" class="absolute top-6 right-6 text-white text-3xl focus:outline-none">&times;</button>
+      <div class="max-w-4xl max-h-[85vh] p-4 flex flex-col items-center">
+        <img id="modal-img" src="" alt="Preview" class="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl" />
+        <h3 id="modal-title" class="text-white text-sm sm:text-base font-bold mt-4 text-center"></h3>
+      </div>
+    </div>
+
+    <!-- SCRIPTS INTEGRASI CMS APPS SCRIPT -->
+    <script>
+      const CMS_API_URL = "https://script.google.com/macros/s/AKfycbxzanh9WbwFRDk0kbPWNpSGsjqlXksanv_r5hE0E_8Uy2XCBEaS3-G3VF7_HEoSW-vb/exec?action=getData";
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Fetch Semua Data dari CMS Apps Script
+      async function loadFullGallery() {
+        const grid = document.getElementById("gallery-grid");
+        try {
+          const response = await fetch(CMS_API_URL);
+          const data = await response.json();
+
+          if (!data || data.length === 0) {
+            grid.innerHTML = `<p class="col-span-full text-center text-xs text-ui-muted py-12">Belum ada foto tersimpan di CMS.</p>`;
+            return;
+          }
+
+          grid.innerHTML = "";
+          // Urutkan dari foto paling baru diunggah
+          const reversedData = data.reverse();
+
+          reversedData.forEach(item => {
+            const card = document.createElement("div");
+            card.className = "gallery-item group cursor-pointer bg-white p-3 rounded-2xl border border-gray-200/80 shadow-card hover:shadow-soft transition-all duration-300";
+            card.innerHTML = `
+              <div class="relative overflow-hidden rounded-xl aspect-[3/2] bg-gray-100 flex items-center justify-center">
+                <img src="${item.imageBase64}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                <div class="absolute inset-0 bg-ui-dark/30 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                  <span class="w-10 h-10 rounded-full bg-white text-ui-dark flex items-center justify-center shadow-lg"><i class="fas fa-expand text-xs"></i></span>
+                </div>
+              </div>
+              <div class="mt-3 flex items-center justify-between px-1">
+                <div>
+                  <h4 class="text-sm font-bold text-ui-dark">${item.title}</h4>
+                  <p class="text-[11px] font-medium text-ui-muted">${item.category} • ${item.year}</p>
+                </div>
+                <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-ui-bg text-ui-indigo">${item.category}</span>
+              </div>
+            `;
+
+            // Open Modal
+            card.addEventListener("click", () => {
+              document.getElementById("modal-img").src = item.imageBase64;
+              document.getElementById("modal-title").textContent = item.title + " (" + item.category + " - " + item.year + ")";
+              document.getElementById("portfolio-modal").classList.remove("opacity-0", "pointer-events-none");
+            });
+
+            grid.appendChild(card);
+          });
+        } catch (err) {
+          console.error("Error fetching full gallery:", err);
+          grid.innerHTML = `<p class="col-span-full text-center text-xs text-red-500 py-12">Gagal memuat galeri dari server CMS.</p>`;
+        }
+      }
+
+      // Modal Close Handler
+      document.getElementById("modal-close").addEventListener("click", () => {
+        document.getElementById("portfolio-modal").classList.add("opacity-0", "pointer-events-none");
+      });
+
+      // Anti Right Click
+      document.addEventListener("contextmenu", e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+
+      // Run on Load
+      window.onload = loadFullGallery;
+    </script>
   </body>
 </html>
