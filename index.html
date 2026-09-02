@@ -203,13 +203,13 @@
   <body
     class="bg-brand-canvas text-brand-dark font-sans antialiased selection:bg-brand-primary selection:text-white overflow-x-hidden relative max-w-full"
   >
-    <!-- Canvas untuk Ekosistem Partikel Meteor Trail (Melayang di Atas Background) -->
+    <!-- Canvas untuk Ekosistem Partikel Meteor Trail -->
     <canvas
       id="meteor-canvas"
       class="fixed inset-0 pointer-events-none z-30 w-full h-full"
     ></canvas>
 
-    <!-- Outer Wrapper (100% Full Width) -->
+    <!-- Outer Wrapper -->
     <div class="w-full bg-brand-canvas relative min-h-screen pt-4 sm:pt-6 z-10 overflow-x-hidden">
       <!-- Background Dynamic Glow Orbs -->
       <div
@@ -275,7 +275,7 @@
           </button>
         </nav>
 
-        <!-- Mobile Dropdown Drawer (Connected under Floating Navbar) -->
+        <!-- Mobile Dropdown Drawer -->
         <div
           id="mobile-drawer"
           class="absolute left-4 right-4 top-[80%] pt-6 pb-6 px-6 bg-white/95 backdrop-blur-2xl border border-white/80 shadow-2xl rounded-b-3xl md:hidden z-10 opacity-0 pointer-events-none -translate-y-6 transition-all duration-300 ease-out"
@@ -952,7 +952,7 @@
 
       document.getElementById("year").textContent = new Date().getFullYear();
 
-      // LOGIKA KURSOR METEOR SPARKLE TRAIL (CANVAS PARTICLE ANIMATION)
+      // LOGIKA KURSOR METEOR SPARKLE TRAIL
       (function initMeteorTrail() {
         if (!window.matchMedia("(pointer: fine)").matches) return;
 
@@ -968,13 +968,7 @@
         });
 
         const particles = [];
-        const colors = [
-          "#6366F1", // Indigo
-          "#8B5CF6", // Violet
-          "#EC4899", // Neon Pink
-          "#06B6D4", // Cyan
-          "#F43F5E", // Rose
-        ];
+        const colors = ["#6366F1", "#8B5CF6", "#EC4899", "#06B6D4", "#F43F5E"];
 
         class MeteorParticle {
           constructor(x, y) {
@@ -983,15 +977,15 @@
             this.size = Math.random() * 5 + 2;
             this.color = colors[Math.floor(Math.random() * colors.length)];
             this.vx = (Math.random() - 0.5) * 2;
-            this.vy = (Math.random() - 0.5) * 2 + 1; // Meluncur sedikit ke bawah bagai meteor
-            this.life = 1; // Opacity awal
-            this.decay = Math.random() * 0.03 + 0.015; // Kecepatan memudar
+            this.vy = (Math.random() - 0.5) * 2 + 1;
+            this.life = 1;
+            this.decay = Math.random() * 0.03 + 0.015;
           }
 
           update() {
             this.x += this.vx;
             this.y += this.vy;
-            this.size *= 0.95; // Mengecil berangsur
+            this.size *= 0.95;
             this.life -= this.decay;
           }
 
@@ -1009,7 +1003,6 @@
         }
 
         document.addEventListener("mousemove", (e) => {
-          // Buat 3 partikel per gerakan kursor agar ekor meteor terlihat tebal
           for (let i = 0; i < 3; i++) {
             particles.push(new MeteorParticle(e.clientX, e.clientY));
           }
@@ -1094,7 +1087,17 @@
         window.scrollTo({ top: 0, behavior: "smooth" }),
       );
 
-      // FETCH DATA DARI APPS SCRIPT
+      // HELPER: LOADER GAMBAR ASINKRON SEQUENTIAL (SATU PER SATU)
+      function loadImageSequential(src) {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.onload = () => resolve(true);
+          img.onerror = () => resolve(false);
+          img.src = src;
+        });
+      }
+
+      // FETCH DATA DARI APPS SCRIPT BERURUTAN (SATU DENGAN SATU)
       async function fetchCMSPortfolio() {
         const grid = document.getElementById("portfolio-grid");
         try {
@@ -1109,13 +1112,22 @@
           grid.innerHTML = "";
           const recentData = data.slice(-6).reverse();
 
-          recentData.forEach((item) => {
+          // 1. Buat kontainer skeleton untuk tempat gambar lebih dulu
+          const cardsInfo = recentData.map((item) => {
             const card = document.createElement("div");
             card.className =
               "portfolio-item group cursor-pointer bg-white p-3 rounded-2xl border border-slate-100 shadow-bento hover:shadow-glow transition-all duration-300";
+
             card.innerHTML = `
-              <div class="relative overflow-hidden rounded-xl aspect-[3/2] bg-slate-100">
-                <img src="${item.imageBase64}" alt="${item.title || "VA Digital Creative"}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <div class="relative overflow-hidden rounded-xl aspect-[3/2] bg-slate-100 flex items-center justify-center">
+                <div class="img-spinner text-brand-primary text-xl">
+                  <i class="fas fa-circle-notch animate-spin"></i>
+                </div>
+                <img 
+                  src="" 
+                  alt="${item.title || "VA Digital Creative"}" 
+                  class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-0 transition-opacity duration-300" 
+                />
                 <div class="absolute inset-0 bg-brand-dark/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
                   <span class="w-10 h-10 rounded-full bg-white text-brand-dark flex items-center justify-center shadow-lg"><i class="fas fa-expand text-xs"></i></span>
                 </div>
@@ -1135,7 +1147,23 @@
             });
 
             grid.appendChild(card);
+
+            return {
+              card,
+              item,
+              imgElem: card.querySelector("img"),
+              spinner: card.querySelector(".img-spinner"),
+            };
           });
+
+          // 2. Load gambar satu per satu berurutan (sequential execution)
+          for (const cardObj of cardsInfo) {
+            await loadImageSequential(cardObj.item.imageBase64);
+            cardObj.imgElem.src = cardObj.item.imageBase64;
+            cardObj.imgElem.classList.remove("opacity-0");
+            if (cardObj.spinner) cardObj.spinner.remove();
+          }
+
         } catch (err) {
           console.error("Fetch Error:", err);
           grid.innerHTML = `<p class="col-span-full text-center text-xs text-red-500 py-8">Gagal memuat galeri dari server CMS.</p>`;
