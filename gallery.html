@@ -43,16 +43,15 @@
       
       <!-- Navbar -->
       <nav class="sticky top-0 z-40 glass-nav border-b border-gray-200/50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-8 h-16 sm:h-20 flex items-center justify-between">
-        <!-- Diarahkan dengan https:// agar membuka domain eksternal -->
-        <a href="https://vadigitalcreative.my.id" class="text-xl sm:text-2xl font-extrabold tracking-tight text-ui-dark">Alvin Ardian<span class="text-ui-indigo">.</span></a>
-        
-        <a href="https://vadigitalcreative.my.id" class="inline-flex items-center space-x-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-ui-dark hover:bg-ui-indigo text-white font-semibold text-xs sm:text-sm transition-all duration-300 shadow-md">
-          <i class="fas fa-arrow-left text-xs"></i>
-          <span>Kembali ke Beranda</span>
-        </a>
-      </div>
-    </nav>
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 h-16 sm:h-20 flex items-center justify-between">
+          <a href="https://vadigitalcreative.my.id" class="text-xl sm:text-2xl font-extrabold tracking-tight text-ui-dark">Alvin Ardian<span class="text-ui-indigo">.</span></a>
+          
+          <a href="https://vadigitalcreative.my.id" class="inline-flex items-center space-x-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-ui-dark hover:bg-ui-indigo text-white font-semibold text-xs sm:text-sm transition-all duration-300 shadow-md">
+            <i class="fas fa-arrow-left text-xs"></i>
+            <span>Kembali ke Beranda</span>
+          </a>
+        </div>
+      </nav>
 
       <!-- Main Gallery Section -->
       <main class="py-8 sm:py-12 px-4 sm:px-8 max-w-7xl mx-auto w-full flex-grow">
@@ -74,7 +73,7 @@
         <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 min-h-[400px]">
           <div class="col-span-full text-center py-16 text-ui-muted">
             <i class="fas fa-circle-notch animate-spin text-2xl text-ui-indigo mb-2"></i>
-            <p class="text-xs font-semibold">Memuat Gambar</p>
+            <p class="text-xs font-semibold">Memuat Data Galeri...</p>
           </div>
         </div>
       </main>
@@ -104,7 +103,17 @@
 
       document.getElementById("year").textContent = new Date().getFullYear();
 
-      // Fetch Semua Data dari CMS Apps Script
+      // Helper Promise untuk memuat gambar satu per satu secara asinkron
+      function loadImageSequential(src) {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.onload = () => resolve(true);
+          img.onerror = () => resolve(false);
+          img.src = src;
+        });
+      }
+
+      // Fetch Semua Data dari CMS Apps Script dan Render Gambar Satu per Satu
       async function loadFullGallery() {
         const grid = document.getElementById("gallery-grid");
         try {
@@ -120,12 +129,21 @@
           // Urutkan dari foto paling baru diunggah
           const reversedData = data.reverse();
 
-          reversedData.forEach(item => {
+          // 1. Buat elemen rangka (skeleton/card) terlebih dahulu
+          const cardsInfo = reversedData.map(item => {
             const card = document.createElement("div");
             card.className = "gallery-item group cursor-pointer bg-white p-3 rounded-2xl border border-gray-200/80 shadow-card hover:shadow-soft transition-all duration-300";
+            
             card.innerHTML = `
               <div class="relative overflow-hidden rounded-xl aspect-[3/2] bg-gray-100 flex items-center justify-center">
-                <img src="${item.imageBase64}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                <div class="img-spinner text-ui-indigo text-xl">
+                  <i class="fas fa-circle-notch animate-spin"></i>
+                </div>
+                <img 
+                  src="" 
+                  alt="${item.title}" 
+                  class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-0 transition-opacity duration-300" 
+                />
                 <div class="absolute inset-0 bg-ui-dark/30 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
                   <span class="w-10 h-10 rounded-full bg-white text-ui-dark flex items-center justify-center shadow-lg"><i class="fas fa-expand text-xs"></i></span>
                 </div>
@@ -139,7 +157,7 @@
               </div>
             `;
 
-            // Open Modal
+            // Open Modal Lightbox
             card.addEventListener("click", () => {
               document.getElementById("modal-img").src = item.imageBase64;
               document.getElementById("modal-title").textContent = item.title + " (" + item.category + " - " + item.year + ")";
@@ -147,7 +165,23 @@
             });
 
             grid.appendChild(card);
+
+            return {
+              card,
+              item,
+              imgElem: card.querySelector("img"),
+              spinner: card.querySelector(".img-spinner")
+            };
           });
+
+          // 2. Load gambar satu per satu secara berurutan (sequential execution)
+          for (const cardObj of cardsInfo) {
+            await loadImageSequential(cardObj.item.imageBase64);
+            cardObj.imgElem.src = cardObj.item.imageBase64;
+            cardObj.imgElem.classList.remove("opacity-0");
+            if (cardObj.spinner) cardObj.spinner.remove();
+          }
+
         } catch (err) {
           console.error("Error fetching full gallery:", err);
           grid.innerHTML = `<p class="col-span-full text-center text-xs text-red-500 py-12">Gagal memuat galeri dari server CMS.</p>`;
