@@ -210,7 +210,7 @@
     ></canvas>
 
     <!-- Outer Wrapper -->
-    <div class="w-full bg-brand-canvas relative min-h-screen pt-4 sm:pt-6 z-10 overflow-x-hidden">
+    <div class="w-full bg-brand-canvas relative min-h-screen z-10 overflow-x-hidden">
       <!-- Background Dynamic Glow Orbs -->
       <div
         class="absolute -top-20 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[280px] sm:h-[350px] bg-gradient-to-r from-brand-primary/20 via-brand-pink/20 to-brand-cyan/20 rounded-full blur-[80px] sm:blur-[120px] pointer-events-none animate-pulse-glow"
@@ -219,11 +219,11 @@
         class="absolute top-1/2 right-0 translate-x-1/2 w-60 sm:w-80 h-60 sm:h-80 bg-brand-secondary/15 rounded-full blur-[80px] sm:blur-[100px] pointer-events-none"
       ></div>
 
-      <!-- Floating Capsule Navigation Bar Header Wrapper -->
-      <header class="sticky top-4 sm:top-6 z-50 px-4 sm:px-8 max-w-7xl mx-auto relative">
+      <!-- Floating Fixed Capsule Navigation Bar (Tetap di atas saat di-scroll) -->
+      <header class="fixed top-4 sm:top-6 left-0 right-0 z-50 px-4 sm:px-8 max-w-7xl mx-auto pointer-events-none">
         <nav
           id="navbar-capsule"
-          class="glass-floating-nav rounded-full border border-white/80 shadow-floating px-5 sm:px-8 h-16 sm:h-20 flex items-center justify-between relative z-20 transition-all duration-300"
+          class="glass-floating-nav rounded-full border border-white/80 shadow-floating px-5 sm:px-8 h-16 sm:h-20 flex items-center justify-between relative z-20 transition-all duration-300 pointer-events-auto"
         >
           <!-- Logo -->
           <a href="https://vadigitalcreative.my.id" class="flex items-center group">
@@ -278,7 +278,7 @@
         <!-- Mobile Dropdown Drawer -->
         <div
           id="mobile-drawer"
-          class="absolute left-4 right-4 top-[80%] pt-6 pb-6 px-6 bg-white/95 backdrop-blur-2xl border border-white/80 shadow-2xl rounded-b-3xl md:hidden z-10 opacity-0 pointer-events-none -translate-y-6 transition-all duration-300 ease-out"
+          class="absolute left-4 right-4 top-[80%] pt-6 pb-6 px-6 bg-white/95 backdrop-blur-2xl border border-white/80 shadow-2xl rounded-b-3xl md:hidden z-10 opacity-0 pointer-events-none -translate-y-6 transition-all duration-300 ease-out pointer-events-auto"
         >
           <div class="flex justify-between items-center mb-5 border-b border-slate-100 pb-3">
             <span class="text-xs font-extrabold tracking-widest text-brand-muted uppercase">Navigation Menu</span>
@@ -299,13 +299,13 @@
         </div>
       </header>
 
-      <!-- Hero Section -->
+      <!-- Hero Section (Diberi pt-28 sm:pt-36 agar tidak tertutup Fixed Navbar) -->
       <section
         id="home"
-        class="pt-10 sm:pt-16 pb-14 sm:pb-24 px-4 sm:px-12 max-w-7xl mx-auto text-center relative"
+        class="pt-28 sm:pt-36 pb-14 sm:pb-24 px-4 sm:px-12 max-w-7xl mx-auto text-center relative"
       >
         <!-- Floating Pills -->
-        <div class="hidden sm:flex absolute top-2 left-4 animate-float">
+        <div class="hidden sm:flex absolute top-10 left-4 animate-float">
           <span
             class="inline-flex items-center space-x-2 bg-white/90 backdrop-blur border border-slate-200/80 shadow-sm px-4 py-1.5 rounded-full text-xs font-semibold text-brand-dark"
           >
@@ -314,7 +314,7 @@
           </span>
         </div>
         <div
-          class="hidden sm:flex absolute top-16 right-6 animate-float-delayed"
+          class="hidden sm:flex absolute top-24 right-6 animate-float-delayed"
         >
           <span
             class="inline-flex items-center space-x-2 bg-white/90 backdrop-blur border border-slate-200/80 shadow-sm px-4 py-1.5 rounded-full text-xs font-semibold text-brand-dark"
@@ -1097,7 +1097,7 @@
         });
       }
 
-      // FETCH DATA DARI APPS SCRIPT BERURUTAN (SATU DENGAN SATU)
+      // FETCH DATA DARI APPS SCRIPT BERURUTAN (SATU PER SATU)
       async function fetchCMSPortfolio() {
         const grid = document.getElementById("portfolio-grid");
         try {
@@ -1112,7 +1112,7 @@
           grid.innerHTML = "";
           const recentData = data.slice(-6).reverse();
 
-          // 1. Buat kontainer skeleton untuk tempat gambar lebih dulu
+          // 1. Buat kontainer skeleton tempat gambar lebih dulu
           const cardsInfo = recentData.map((item) => {
             const card = document.createElement("div");
             card.className =
