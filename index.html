@@ -4,25 +4,25 @@
     <!-- === META TAGS SEO UTAMA === -->
     <meta
       name="description"
-      content="Portofolio Fotografi Resmi Alvin Ardian (vin.ard). Menampilkan karya fotografi komersial, event sinematik, dan dokumentasi otomotif berbasis di Semarang."
+      content="VA Digital Creative - Fotografi Komersial, Dokumentasi Event, Foto Portrait, & Visual Branding berbasis di Semarang."
     />
     <meta
       name="keywords"
-      content="Alvin Ardian, vin.ard, fotografer semarang, jasa foto semarang, portofolio fotografi, fotografi komersial semarang, foto event gereja, automotive photography indonesia, bonaventura alvin ardian, kreator digital semarang"
+      content="VA Digital Creative, Alvin Ardian, vin.ard, agensi fotografi semarang, jasa foto komersial, foto event semarang, automotive photography indonesia, visual branding semarang, studio kreatif semarang, foto wisuda semarang, freelance fotografer semarang"
     />
     <meta name="robots" content="index, follow" />
-    <meta name="author" content="Alvin Ardian" />
+    <meta name="author" content="VA Digital Creative" />
 
     <!-- Open Graph Meta -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://vadigitalcreative.my.id/" />
     <meta
       property="og:title"
-      content="Alvin Ardian | Professional Photography Portfolio"
+      content="VA Digital Creative | Alvin Ardian Portofolio"
     />
     <meta
       property="og:description"
-      content="Jelajahi karya visual sinematik, event, dan otomotif terbaik oleh Alvin Ardian. Siap berkolaborasi untuk mengabadikan momen berharga Anda."
+      content="Solusi visual fotografi di bidang event, celebration, portrait, dan corporate berestetika tinggi untuk mentransformasi brand Anda."
     />
     <meta property="og:image" content="image/logo-va.png" />
 
@@ -42,16 +42,16 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alvin Ardian | Portfolio</title>
+    <title>VA Digital Creative | Alvin Ardian Portofolio</title>
     <link rel="icon" type="image/x-icon" href="image/logo-va.png" />
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Plus Jakarta Sans -->
+    <!-- Google Fonts: Plus Jakarta Sans & Syne -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Syne:wght@700;800&display=swap"
       rel="stylesheet"
     />
     <!-- Font Awesome Icons -->
@@ -76,24 +76,28 @@
           extend: {
             fontFamily: {
               sans: ['"Plus Jakarta Sans"', "sans-serif"],
+              display: ['"Syne"', "sans-serif"],
             },
             colors: {
-              ui: {
-                bg: "#F4F5F9",
+              brand: {
+                bg: "#FAF9FE",
                 canvas: "#FFFFFF",
+                primary: "#6366F1",
+                secondary: "#8B5CF6",
+                pink: "#EC4899",
+                cyan: "#06B6D4",
+                dark: "#0F172A",
                 card: "#FFFFFF",
-                dark: "#0F1117",
-                indigo: "#5B51D8",
-                violet: "#7C3AED",
-                accent: "#6366F1",
-                text: "#1E2229",
-                muted: "#6B7280",
+                light: "#F1F5F9",
+                muted: "#64748B",
               },
             },
             boxShadow: {
-              soft: "0 20px 40px -15px rgba(0, 0, 0, 0.05)",
-              card: "0 10px 30px -5px rgba(0, 0, 0, 0.04)",
-              glow: "0 0 30px rgba(91, 81, 216, 0.25)",
+              glow: "0 0 30px rgba(99, 102, 241, 0.35)",
+              "pink-glow": "0 0 35px rgba(236, 72, 153, 0.3)",
+              card: "0 20px 40px -15px rgba(15, 23, 42, 0.06)",
+              bento: "0 10px 30px -5px rgba(99, 102, 241, 0.08)",
+              floating: "0 20px 50px -10px rgba(15, 23, 42, 0.12)",
             },
           },
         },
@@ -113,27 +117,76 @@
         width: 8px;
       }
       ::-webkit-scrollbar-track {
-        background: #f4f5f9;
+        background: #faf9fe;
       }
       ::-webkit-scrollbar-thumb {
         background: #cbd5e1;
-        border-radius: 4px;
+        border-radius: 99px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #5b51d8;
+        background: #6366f1;
       }
 
-      /* Soft Glassmorphism */
-      .glass-nav {
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
+      /* Floating Capsule Navbar Glassmorphism */
+      .glass-floating-nav {
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+
+      /* Keyframe Animations */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-8px) rotate(1deg);
+        }
+      }
+      .animate-float {
+        animation: float 4s ease-in-out infinite;
+      }
+      .animate-float-delayed {
+        animation: float 5s ease-in-out 1.5s infinite;
+      }
+
+      @keyframes marquee {
+        0% {
+          transform: translateX(0%);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .animate-marquee {
+        display: flex;
+        width: max-content;
+        animation: marquee 25s linear infinite;
+      }
+      .animate-marquee:hover {
+        animation-play-state: paused;
+      }
+
+      @keyframes pulse-glow {
+        0%,
+        100% {
+          opacity: 0.6;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.9;
+          transform: scale(1.05);
+        }
+      }
+      .animate-pulse-glow {
+        animation: pulse-glow 6s ease-in-out infinite;
       }
 
       /* Reveal animation */
       .reveal {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(24px);
         transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
       }
       .reveal.active {
@@ -142,258 +195,406 @@
       }
     </style>
   </head>
-  <body class="bg-ui-bg text-ui-text font-sans antialiased">
-    <!-- Main Outer Wrapper / Canvas Frame -->
-    <div
-      class="max-w-[1440px] mx-auto bg-ui-canvas md:my-6 md:rounded-3xl lg:rounded-4xl md:shadow-2xl overflow-hidden border-0 md:border border-gray-200/60 relative min-h-screen"
-    >
-      <!-- Background Ambient Glows -->
+  <body
+    class="bg-brand-canvas text-brand-dark font-sans antialiased selection:bg-brand-primary selection:text-white overflow-x-hidden relative"
+  >
+    <!-- Canvas untuk Ekosistem Partikel Meteor Trail (Melayang di Atas Background) -->
+    <canvas
+      id="meteor-canvas"
+      class="fixed inset-0 pointer-events-none z-30"
+    ></canvas>
+
+    <!-- Outer Wrapper (100% Full Width) -->
+    <div class="w-full bg-brand-canvas relative min-h-screen pt-4 sm:pt-6 z-10">
+      <!-- Background Dynamic Glow Orbs -->
       <div
-        class="absolute -top-24 right-10 w-96 h-96 bg-ui-indigo/15 rounded-full blur-[100px] pointer-events-none"
+        class="absolute -top-20 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-gradient-to-r from-brand-primary/20 via-brand-pink/20 to-brand-cyan/20 rounded-full blur-[120px] pointer-events-none animate-pulse-glow"
       ></div>
       <div
-        class="absolute top-1/3 -left-20 w-80 h-80 bg-ui-violet/10 rounded-full blur-[100px] pointer-events-none"
+        class="absolute top-1/2 -right-24 w-80 h-80 bg-brand-secondary/15 rounded-full blur-[100px] pointer-events-none"
       ></div>
 
-      <!-- Navigation Bar -->
-      <nav class="sticky top-0 z-50 glass-nav border-b border-gray-200/50">
-        <div
-          class="max-w-7xl mx-auto px-4 sm:px-8 h-16 sm:h-20 flex items-center justify-between"
+      <!-- Floating Capsule Navigation Bar Header Wrapper -->
+      <header class="sticky top-4 sm:top-6 z-50 px-4 sm:px-8 max-w-7xl mx-auto relative">
+        <nav
+          id="navbar-capsule"
+          class="glass-floating-nav rounded-full border border-white/80 shadow-floating px-5 sm:px-8 h-16 sm:h-20 flex items-center justify-between relative z-20 transition-all duration-300"
         >
           <!-- Logo -->
-          <a
-            href="#home"
-            class="text-xl sm:text-2xl font-extrabold tracking-tight text-ui-dark hover:opacity-80 transition"
-          >
-            Alvin Ardian<span class="text-ui-indigo">.</span>
+          <a href="https://vadigitalcreative.my.id" class="flex items-center group">
+            <img
+              src="image/logo-new.png"
+              alt="VA Digital Creative Logo"
+              class="h-8 sm:h-11 w-auto object-contain group-hover:scale-105 transition duration-300"
+            />
           </a>
 
           <!-- Desktop Links -->
           <div
-            class="hidden md:flex items-center space-x-8 text-sm font-semibold text-ui-muted"
+            class="hidden md:flex items-center space-x-8 text-xs font-extrabold tracking-wider text-brand-dark uppercase"
           >
-            <a href="#home" class="hover:text-ui-indigo transition">Beranda</a>
-            <a href="#about" class="hover:text-ui-indigo transition"
+            <a href="https://vadigitalcreative.my.id/" class="hover:text-brand-primary transition"
+              >Beranda</a
+            >
+            <a href="#services" class="hover:text-brand-primary transition"
+              >Layanan</a
+            >
+            <a href="#about" class="hover:text-brand-primary transition"
               >Tentang</a
             >
-            <a href="#portfolio" class="hover:text-ui-indigo transition"
+            <a href="#portfolio" class="hover:text-brand-primary transition"
               >Portofolio</a
             >
-            <a href="#contact" class="hover:text-ui-indigo transition"
+            <a href="#contact" class="hover:text-brand-primary transition"
               >Kontak</a
             >
           </div>
 
-          <!-- Desktop CTA Button -->
+          <!-- Desktop CTA Pill Button -->
           <div class="hidden md:block">
             <a
               href="#contact"
-              class="px-6 py-2.5 rounded-full bg-ui-dark hover:bg-ui-indigo text-white font-semibold text-sm transition-all duration-300 shadow-md hover:shadow-glow"
+              class="px-7 py-3 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs tracking-wider uppercase transition-all duration-300 shadow-md hover:shadow-indigo-500/30 hover:-translate-y-0.5 inline-block"
             >
-              Hubungi Saya
+              LET'S TALK
             </a>
           </div>
 
           <!-- Mobile Menu Button -->
           <button
             id="mobile-menu-btn"
-            class="md:hidden text-xl text-ui-dark focus:outline-none p-2"
+            class="md:hidden text-xl text-brand-dark focus:outline-none p-2 transition-transform duration-300"
             aria-label="Toggle Menu"
           >
-            <i class="fas fa-bars"></i>
+            <i id="menu-icon" class="fas fa-bars-staggered"></i>
           </button>
-        </div>
+        </nav>
 
-        <!-- Mobile Drawer -->
+        <!-- Mobile Dropdown Drawer (Connected under Floating Navbar) -->
         <div
           id="mobile-drawer"
-          class="fixed inset-x-0 top-0 bg-white/95 backdrop-blur-xl border-b border-gray-200 z-50 transform -translate-y-full transition-transform duration-300 ease-in-out md:hidden p-6 rounded-b-3xl shadow-2xl"
+          class="absolute left-4 right-4 top-[80%] pt-6 pb-6 px-6 bg-white/95 backdrop-blur-2xl border border-white/80 shadow-2xl rounded-b-3xl md:hidden z-10 opacity-0 pointer-events-none -translate-y-6 transition-all duration-300 ease-out"
         >
-          <div class="flex justify-between items-center mb-6">
-            <span class="text-xl font-bold text-ui-dark">Menu</span>
-            <button
-              id="mobile-close-btn"
-              class="text-2xl text-ui-dark p-1"
-              aria-label="Close Menu"
-            >
-              <i class="fas fa-times"></i>
-            </button>
+          <div class="flex justify-between items-center mb-5 border-b border-slate-100 pb-3">
+            <span class="text-xs font-extrabold tracking-widest text-brand-muted uppercase">Navigation Menu</span>
           </div>
-          <div class="flex flex-col space-y-4 text-base font-semibold">
-            <a href="#home" class="mobile-link hover:text-ui-indigo">Beranda</a>
-            <a href="#about" class="mobile-link hover:text-ui-indigo"
-              >Tentang</a
-            >
-            <a href="#portfolio" class="mobile-link hover:text-ui-indigo"
-              >Portofolio</a
-            >
-            <a href="#contact" class="mobile-link hover:text-ui-indigo"
-              >Kontak</a
-            >
+          <div class="flex flex-col space-y-3.5 text-sm font-bold text-brand-dark">
+            <a href="#home" class="mobile-link hover:text-brand-primary transition-colors">Beranda</a>
+            <a href="#services" class="mobile-link hover:text-brand-primary transition-colors">Layanan</a>
+            <a href="#about" class="mobile-link hover:text-brand-primary transition-colors">Tentang</a>
+            <a href="#portfolio" class="mobile-link hover:text-brand-primary transition-colors">Portofolio</a>
+            <a href="#contact" class="mobile-link hover:text-brand-primary transition-colors">Kontak</a>
           </div>
           <a
             href="#contact"
-            class="mobile-link mt-6 block w-full text-center py-3 rounded-full bg-ui-indigo text-white font-bold shadow-md"
+            class="mobile-link mt-6 block w-full text-center py-3.5 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs tracking-wider uppercase shadow-md transition-all"
           >
-            Hubungi Saya
+            LET'S TALK
           </a>
         </div>
-      </nav>
+      </header>
 
       <!-- Hero Section -->
       <section
         id="home"
-        class="pt-8 pb-16 px-4 sm:px-8 max-w-7xl mx-auto relative"
+        class="pt-10 sm:pt-16 pb-14 sm:pb-24 px-6 sm:px-12 max-w-7xl mx-auto text-center relative"
       >
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          <!-- Text Content -->
-          <div class="lg:col-span-7 space-y-5">
-            <div
-              class="inline-flex items-center space-x-2 bg-gray-100 px-3 py-1.5 rounded-full border border-gray-200 shadow-sm text-xs font-bold text-ui-indigo"
-            >
-              <span class="w-2 h-2 rounded-full bg-ui-indigo animate-pulse"></span>
-              <span>Available for Freelance & Collaboration</span>
-            </div>
+        <!-- Floating Pills -->
+        <div class="hidden sm:flex absolute top-2 left-4 animate-float">
+          <span
+            class="inline-flex items-center space-x-2 bg-white/90 backdrop-blur border border-slate-200/80 shadow-sm px-4 py-1.5 rounded-full text-xs font-semibold text-brand-dark"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>
+            <span>High-Impact Visuals</span>
+          </span>
+        </div>
+        <div
+          class="hidden sm:flex absolute top-16 right-6 animate-float-delayed"
+        >
+          <span
+            class="inline-flex items-center space-x-2 bg-white/90 backdrop-blur border border-slate-200/80 shadow-sm px-4 py-1.5 rounded-full text-xs font-semibold text-brand-dark"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-pink"></span>
+            <span>Modern Aesthetic</span>
+          </span>
+        </div>
 
-            <h1
-              class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-ui-dark tracking-tight leading-tight"
-            >
-              Capture stories through smart
-              <span
-                class="bg-gradient-to-r from-ui-indigo to-ui-violet bg-clip-text text-transparent"
-                >visual solutions.</span
-              >
-            </h1>
-
-            <p class="text-sm sm:text-lg text-ui-muted max-w-xl font-medium leading-relaxed">
-              Halo, Saya <strong class="text-ui-dark">Alvin Ardian</strong>.
-              Fotografer profesional berbasis di Semarang yang berdedikasi
-              mengabadikan momen komersial, event, dan otomotif menjadi karya
-              bernilai estetika tinggi.
-            </p>
-
-            <div class="flex flex-wrap items-center gap-3 pt-2">
-              <a
-                href="#contact"
-                class="flex-1 sm:flex-none justify-center px-6 py-3.5 rounded-full bg-ui-indigo hover:bg-ui-violet text-white font-bold text-sm transition-all duration-300 shadow-md hover:shadow-glow flex items-center space-x-2"
-              >
-                <span>Mulai Proyek</span>
-                <i class="fas fa-arrow-right text-xs"></i>
-              </a>
-              <a
-                href="gallery.html"
-                class="flex-1 sm:flex-none justify-center text-center px-6 py-3.5 rounded-full bg-gray-50 hover:bg-gray-100 text-ui-dark font-semibold text-sm border border-gray-200 shadow-sm transition-all duration-300"
-              >
-                Lihat Galeri
-              </a>
-            </div>
+        <div class="space-y-6 max-w-4xl mx-auto">
+          <!-- Top Tagline Badge -->
+          <div
+            class="inline-flex items-center space-x-2 bg-slate-100 border border-slate-200/80 px-4 py-1.5 rounded-full shadow-sm text-[11px] font-bold tracking-wider text-brand-primary uppercase"
+          >
+            <span
+              class="w-2 h-2 rounded-full bg-brand-primary animate-pulse"
+            ></span>
+            <span>Visual Storyteller & Photography</span>
           </div>
 
-          <!-- Hero Main Graphic / Feature Card -->
-          <div class="lg:col-span-5 relative">
-            <div
-              class="bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-soft border border-gray-200/80 relative z-10"
+          <!-- Main Headline -->
+          <h1
+            class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] text-brand-dark"
+          >
+            Personal Stories & Brand Visuals,
+            <span
+              class="bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-pink bg-clip-text text-transparent"
+              >Crafted to Perfection.</span
             >
-              <div
-                class="relative aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden bg-gray-100"
-              >
-                <img
-                  src="image/profil2.jpeg"
-                  alt="Alvin Ardian"
-                  class="w-full h-full object-cover"
-                  onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80'"
-                />
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-ui-dark/80 via-transparent to-transparent"
-                ></div>
-                <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 text-white">
-                  <span
-                    class="text-[10px] sm:text-xs uppercase tracking-widest font-semibold text-gray-300 block mb-1"
-                    >Visual Storyteller</span
-                  >
-                  <h3 class="text-lg sm:text-xl font-bold">Bonaventura Alvin Ardian</h3>
-                </div>
-              </div>
-            </div>
+          </h1>
+
+          <!-- Subtitle -->
+          <p
+            class="text-base sm:text-xl text-brand-muted font-medium leading-relaxed max-w-2xl mx-auto"
+          >
+            Jasa fotografi profesional berbasis di Semarang. Menghadirkan visual
+            yang rapi dan autentik untuk mengabadikan momen berharga Anda maupun
+            memperkuat citra produk Anda.
+          </p>
+
+          <!-- Dual CTA Buttons -->
+          <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+            <a
+              href="#contact"
+              class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-pink hover:opacity-95 text-white font-bold text-sm transition-all duration-300 shadow-glow hover:shadow-pink-glow hover:-translate-y-0.5 flex items-center justify-center space-x-2"
+            >
+              <span>Konsultasi Proyek</span>
+              <i class="fas fa-arrow-right text-xs"></i>
+            </a>
+            <a
+              href="gallery.html"
+              class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white hover:bg-slate-50 text-brand-dark font-bold text-sm border border-slate-200 shadow-sm transition-all duration-300 hover:-translate-y-0.5 flex items-center justify-center space-x-2"
+            >
+              <span>Explore Portfolio</span>
+            </a>
           </div>
         </div>
 
-        <!-- Quick Stats Cards Bar -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-10 sm:mt-16">
+        <!-- Quick Stats Bento Layout -->
+        <div
+          class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mt-14 sm:mt-20 text-left"
+        >
           <div
-            class="bg-white p-4 sm:p-5 rounded-2xl border border-gray-200/80 shadow-card flex items-center justify-between"
+            class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-100 shadow-bento hover:border-slate-200 transition duration-300"
           >
-            <div>
-              <p class="text-xs font-semibold text-ui-muted">Pengalaman</p>
-              <p class="text-xl sm:text-2xl font-extrabold text-ui-dark">05+ Tahun</p>
-            </div>
-            <span
-              class="px-3 py-1.5 rounded-full bg-ui-bg text-ui-indigo font-bold text-xs"
-              >EXP</span
-            >
+            <p class="text-2xl sm:text-3xl font-extrabold text-brand-dark mt-2">
+              5+ Tahun
+            </p>
+            <p class="text-[11px] text-brand-muted mt-1">
+              Pengalaman Industri Fotografi
+            </p>
           </div>
 
           <div
-            class="bg-white p-4 sm:p-5 rounded-2xl border border-gray-200/80 shadow-card flex items-center justify-between"
+            class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-100 shadow-bento hover:border-slate-200 transition duration-300"
           >
-            <div>
-              <p class="text-xs font-semibold text-ui-muted">Projek Selesai</p>
-              <p class="text-xl sm:text-2xl font-extrabold text-ui-dark">50+ Projects</p>
-            </div>
-            <span
-              class="px-3 py-1.5 rounded-full bg-ui-bg text-ui-indigo font-bold text-xs"
-              >PRJ</span
-            >
+            <p class="text-2xl sm:text-3xl font-extrabold text-brand-dark mt-2">
+              50+ Projek
+            </p>
+            <p class="text-[11px] text-brand-muted mt-1">
+              Personal & Komersial
+            </p>
           </div>
 
           <div
-            class="bg-white p-4 sm:p-5 rounded-2xl border border-gray-200/80 shadow-card flex items-center justify-between"
+            class="bg-white p-5 sm:p-6 rounded-2xl border border-slate-100 shadow-bento hover:border-slate-200 transition duration-300"
           >
-            <div>
-              <p class="text-xs font-semibold text-ui-muted">Kepuasan Klien</p>
-              <p class="text-xl sm:text-2xl font-extrabold text-ui-dark">100% Satisfied</p>
-            </div>
-            <span
-              class="px-3 py-1.5 rounded-full bg-ui-bg text-ui-indigo font-bold text-xs"
-              >100%</span
+            <p
+              class="text-xs font-semibold text-brand-muted uppercase tracking-wider"
             >
+              Kepuasan
+            </p>
+            <p class="text-2xl sm:text-3xl font-extrabold text-brand-dark mt-2">
+              100%
+            </p>
+            <p class="text-[11px] text-brand-muted mt-1">Klien Puas</p>
           </div>
 
           <div
-            class="bg-ui-dark text-white p-4 sm:p-5 rounded-2xl shadow-card flex items-center justify-between"
+            class="bg-brand-dark text-white p-5 sm:p-6 rounded-2xl shadow-bento relative overflow-hidden flex flex-col justify-between"
           >
             <div>
-              <p class="text-xs font-semibold text-gray-400">Lokasi Utama</p>
-              <p class="text-lg sm:text-xl font-bold">Semarang, ID</p>
+              <p
+                class="text-xs font-semibold text-slate-400 uppercase tracking-wider"
+              >
+                Lokasi
+              </p>
+              <p class="text-xl sm:text-2xl font-bold text-white mt-2">
+                Semarang, ID
+              </p>
             </div>
-            <span
-              class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white text-xs"
-              ><i class="fas fa-location-dot"></i
-            ></span>
+            <p class="text-[11px] text-slate-400 mt-1">Base Operational</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scrolling Marquee Banner -->
+      <div
+        class="bg-brand-dark text-white py-4 overflow-hidden relative border-y border-slate-800"
+      >
+        <div
+          class="animate-marquee whitespace-nowrap flex items-center space-x-12 text-xs font-bold tracking-widest uppercase text-slate-300"
+        >
+          <!-- Set 1 -->
+          <span>FOTO WISUDA</span><span class="text-slate-600">•</span>
+          <span>OTOMOTIF FOTOGRAFI</span><span class="text-slate-600">•</span>
+          <span>EVENT DOKUMENTASI</span><span class="text-slate-600">•</span>
+          <span>VISUAL BRANDING</span><span class="text-slate-600">•</span>
+          <span>FOTO PRODUK</span><span class="text-slate-600">•</span>
+          <span>FOTO ARSITEKTUR</span><span class="text-slate-600">•</span>
+          <span>PORTRAIT FOTOGRAFI</span><span class="text-slate-600">•</span>
+
+          <!-- Set 2 -->
+          <span>FOTO WISUDA</span><span class="text-slate-600">•</span>
+          <span>OTOMOTIF FOTOGRAFI</span><span class="text-slate-600">•</span>
+          <span>EVENT DOKUMENTASI</span><span class="text-slate-600">•</span>
+          <span>VISUAL BRANDING</span><span class="text-slate-600">•</span>
+          <span>FOTO PRODUK</span><span class="text-slate-600">•</span>
+          <span>FOTO ARSITEKTUR</span><span class="text-slate-600">•</span>
+          <span>PORTRAIT FOTOGRAFI</span><span class="text-slate-600">•</span>
+        </div>
+      </div>
+
+      <!-- Services Section -->
+      <section
+        id="services"
+        class="py-16 sm:py-24 px-4 sm:px-8 max-w-7xl mx-auto"
+      >
+        <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 reveal">
+          <span
+            class="text-xs font-bold uppercase tracking-widest text-brand-primary block mb-2"
+            >Layanan Utama</span
+          >
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-brand-dark">
+            Apa yang Kami Kerjakan
+          </h2>
+          <p class="text-xs sm:text-sm text-brand-muted mt-3 font-medium">
+            Dikemas dengan estetika modern untuk memaksimalkan daya pikat
+            produk, brand, dan event Anda.
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal"
+        >
+          <!-- Bento Card 1 -->
+          <div
+            class="bg-white p-7 rounded-3xl border border-slate-100 shadow-bento hover:shadow-glow hover:-translate-y-1 transition duration-300 group"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-50 text-brand-primary flex items-center justify-center mb-6 text-lg group-hover:scale-105 transition duration-300"
+            >
+              <i class="fas fa-box-open"></i>
+            </div>
+            <h3 class="text-lg font-bold text-brand-dark mb-2">
+              Commercial & Product
+            </h3>
+            <p class="text-xs text-brand-muted leading-relaxed font-medium">
+              Foto produk yang rapi dan estetis untuk e-commerce, katalog, serta
+              kampanye media sosial demi meningkatkan daya tarik penjualan.
+            </p>
+          </div>
+
+          <!-- Bento Card 2 -->
+          <div
+            class="bg-white p-7 rounded-3xl border border-slate-100 shadow-bento hover:shadow-pink-glow hover:-translate-y-1 transition duration-300 group"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-pink-50 text-brand-pink flex items-center justify-center mb-6 text-lg group-hover:scale-105 transition duration-300"
+            >
+              <i class="fas fa-car-side"></i>
+            </div>
+            <h3 class="text-lg font-bold text-brand-dark mb-2">
+              Automotive Photography
+            </h3>
+            <p class="text-xs text-brand-muted leading-relaxed font-medium">
+              Pengambilan gambar kendaraan bersudut presisi dengan tata cahaya
+              sinematik untuk menonjolkan karakter dan detail visual secara
+              maksimal.
+            </p>
+          </div>
+
+          <!-- Bento Card 3 -->
+          <div
+            class="bg-white p-7 rounded-3xl border border-slate-100 shadow-bento hover:shadow-glow hover:-translate-y-1 transition duration-300 group"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-purple-50 text-brand-secondary flex items-center justify-center mb-6 text-lg group-hover:scale-105 transition duration-300"
+            >
+              <i class="fas fa-camera"></i>
+            </div>
+            <h3 class="text-lg font-bold text-brand-dark mb-2">
+              Event & Celebration
+            </h3>
+            <p class="text-xs text-brand-muted leading-relaxed font-medium">
+              Dokumentasi berkesan untuk wisuda, acara keluarga, hingga event
+              perusahaan dengan momen emosional yang autentik.
+            </p>
+          </div>
+
+          <!-- Bento Card 4 -->
+          <div
+            class="bg-white p-7 rounded-3xl border border-slate-100 shadow-bento hover:shadow-bento hover:-translate-y-1 transition duration-300 group"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-cyan-50 text-brand-cyan flex items-center justify-center mb-6 text-lg group-hover:scale-105 transition duration-300"
+            >
+              <i class="fas fa-user-check"></i>
+            </div>
+            <h3 class="text-lg font-bold text-brand-dark mb-2">
+              Portrait & Personal Branding
+            </h3>
+            <p class="text-xs text-brand-muted leading-relaxed font-medium">
+              Foto profil personal, wisuda, dan konten kreatif yang dirancang
+              khusus untuk membangun personal branding yang percaya diri dan
+              profesional.
+            </p>
           </div>
         </div>
       </section>
 
       <!-- About Section -->
-      <section id="about" class="py-16 sm:py-20 px-4 sm:px-8 bg-gray-50/50 border-y border-gray-200/60">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          <!-- Dark Contrast Feature Card -->
+      <section
+        id="about"
+        class="py-16 sm:py-20 px-4 sm:px-8 bg-indigo-50/30 border-y border-indigo-100/60"
+      >
+        <div
+          class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
+        >
+          <!-- Left Highlight Card -->
           <div class="lg:col-span-5 reveal">
-            <div class="bg-ui-dark text-white p-6 sm:p-8 rounded-3xl shadow-soft relative overflow-hidden">
-              <div class="absolute top-0 right-0 w-32 h-32 bg-ui-indigo/20 rounded-full blur-2xl pointer-events-none"></div>
-              <span class="text-xs font-bold uppercase tracking-widest text-ui-indigo block mb-3">Filosofi Kerja</span>
-              <h3 class="text-xl sm:text-2xl font-extrabold leading-snug mb-3">Visual Presisi dengan Sentuhan Sinematik</h3>
-              <p class="text-xs sm:text-sm text-gray-400 leading-relaxed mb-6">
-                Latar belakang multimedia memberi pemahaman mendalam tentang komposisi, tata cahaya, dan penceritaan visual yang berdampak tinggi bagi audiens.
+            <div
+              class="bg-brand-dark text-white p-8 rounded-3xl shadow-xl relative overflow-hidden"
+            >
+              <div
+                class="absolute -bottom-10 -right-10 w-40 h-40 bg-brand-primary/20 rounded-full blur-3xl pointer-events-none"
+              ></div>
+              <span
+                class="text-xs font-bold uppercase tracking-widest text-brand-pink block mb-3"
+                >KOMITMEN KAMI</span
+              >
+              <h3 class="text-2xl font-bold leading-snug mb-3">
+                High-Energy Visuals with Precision
+              </h3>
+              <p
+                class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6 font-medium"
+              >
+                Kombinasi antara keahlian teknis dan tren visual terkini untuk
+                memastikan setiap foto tampil segar, relevan, dan memikat
+                perhatian.
               </p>
-              <div class="pt-4 border-t border-white/10 grid grid-cols-2 gap-4 text-xs">
+              <div
+                class="pt-4 border-t border-slate-800 grid grid-cols-2 gap-4 text-xs"
+              >
                 <div>
-                  <p class="text-gray-400">Focus</p>
-                  <p class="font-bold text-white text-xs sm:text-sm">Commercial & Event</p>
+                  <p class="text-slate-400">Pengalaman</p>
+                  <p class="font-bold text-white text-sm">
+                    5+ Tahun Professional
+                  </p>
                 </div>
                 <div>
-                  <p class="text-gray-400">Output</p>
-                  <p class="font-bold text-white text-xs sm:text-sm">High Quality Visual</p>
+                  <p class="text-slate-400">Standard Output</p>
+                  <p class="font-bold text-brand-pink text-sm">
+                    High-Res Visuals
+                  </p>
                 </div>
               </div>
             </div>
@@ -401,95 +602,193 @@
 
           <!-- Description Text -->
           <div class="lg:col-span-7 space-y-4 sm:space-y-6 reveal">
-            <div class="inline-flex items-center space-x-2 text-ui-indigo font-bold text-xs uppercase tracking-widest">
-              <span>Tentang Saya</span>
+            <div
+              class="inline-flex items-center space-x-2 text-brand-primary font-bold text-xs uppercase tracking-widest"
+            >
+              <span>Tentang Kami</span>
             </div>
-            <h2 class="text-2xl sm:text-4xl font-extrabold text-ui-dark tracking-tight">
-              Menangkap Esensi dan Cerita Melalui Lensa Kamera
+            <h2
+              class="text-2xl sm:text-4xl font-extrabold text-brand-dark tracking-tight"
+            >
+              Mengabadikan Momen & Memperkuat Visual Brand Anda
             </h2>
-            <p class="text-xs sm:text-base text-ui-muted leading-relaxed">
-              Halo! Saya Bonaventura Alvin Ardian, seorang fotografer berlatar belakang multimedia. Ketertarikan mendalam saya pada komposisi, pencahayaan, dan estetika visual memberikan saya mata yang jeli dalam menangkap setiap momen berharga.
+            <p
+              class="text-xs sm:text-base text-brand-muted leading-relaxed font-medium"
+            >
+              VA Digital Creative hadir dari dedikasi mendalam di bidang
+              multimedia dan estetika fotografi modern. Berfokus pada kualitas
+              visual yang jernih dan autentik, kami terus berkembang dalam
+              menghasilkan karya yang memiliki nilai estetika sekaligus daya
+              pikat tinggi.
             </p>
-            <p class="text-xs sm:text-base text-ui-muted leading-relaxed">
-              Fokus utama saya adalah membantu brand maupun individu menceritakan kisah mereka secara efektif, estetik, dan memukau lewat karya fotografi yang bernilai tinggi.
+            <p
+              class="text-xs sm:text-base text-brand-muted leading-relaxed font-medium"
+            >
+              Kami siap menjadi partner kreatif tepercaya Anda—mulai dari tahap
+              konsep hingga eksekusi—baik untuk kebutuhan fotografi produk,
+              dokumentasi wisuda, maupun personal portrait profesional.
             </p>
 
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2">
-              <div class="p-2.5 bg-white rounded-xl border border-gray-200 text-center font-bold text-xs text-ui-dark shadow-sm">
-                Event
-              </div>
-              <div class="p-2.5 bg-white rounded-xl border border-gray-200 text-center font-bold text-xs text-ui-dark shadow-sm">
-                Product
-              </div>
-              <div class="p-2.5 bg-white rounded-xl border border-gray-200 text-center font-bold text-xs text-ui-dark shadow-sm">
-                Portrait
-              </div>
-              <div class="p-2.5 bg-white rounded-xl border border-gray-200 text-center font-bold text-xs text-ui-dark shadow-sm">
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span
+                class="px-3.5 py-1.5 bg-white rounded-full border border-slate-200 font-semibold text-xs text-brand-dark shadow-sm"
+              >
+                Commercial Shoot
+              </span>
+              <span
+                class="px-3.5 py-1.5 bg-white rounded-full border border-slate-200 font-semibold text-xs text-brand-dark shadow-sm"
+              >
                 Automotive
-              </div>
+              </span>
+              <span
+                class="px-3.5 py-1.5 bg-white rounded-full border border-slate-200 font-semibold text-xs text-brand-dark shadow-sm"
+              >
+                Event & Celebration
+              </span>
+              <span
+                class="px-3.5 py-1.5 bg-white rounded-full border border-slate-200 font-semibold text-xs text-brand-dark shadow-sm"
+              >
+                Creative Direction
+              </span>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Portfolio Section -->
-      <section id="portfolio" class="py-16 sm:py-20 px-4 sm:px-8 max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 reveal">
+      <section
+        id="portfolio"
+        class="py-16 sm:py-24 px-4 sm:px-8 max-w-7xl mx-auto"
+      >
+        <div
+          class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 reveal"
+        >
           <div>
-            <span class="text-xs font-bold uppercase tracking-widest text-ui-indigo block mb-2">Portofolio Selected</span>
-            <h2 class="text-2xl sm:text-4xl font-extrabold text-ui-dark">Galeri Fotografi</h2>
+            <span
+              class="text-xs font-extrabold uppercase tracking-widest text-brand-primary block mb-2"
+              >Portofolio Pilihan</span
+            >
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-brand-dark">
+              Galeri Karya
+            </h2>
           </div>
-          <p class="text-xs sm:text-sm text-ui-muted max-w-md mt-2 md:mt-0">
-            Kumpulan tangkapan visual yang dikurasi khusus untuk mengekspresikan cerita dan keindahan detail lensa.
+          <p
+            class="text-xs sm:text-sm text-brand-muted max-w-md mt-2 md:mt-0 font-medium"
+          >
+            Koleksi tangkapan gambar terbaru yang dikurasi khusus untuk
+            memperlihatkan kualitas visual kami.
           </p>
         </div>
 
         <!-- Dynamic Grid Container -->
-        <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 reveal">
-          <div class="col-span-full text-center py-12 text-ui-muted">
-            <i class="fas fa-circle-notch animate-spin text-2xl text-ui-indigo mb-2"></i>
-            <p class="text-xs font-semibold">Memuat Gambar</p>
+        <div
+          id="portfolio-grid"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 reveal"
+        >
+          <div class="col-span-full text-center py-12 text-brand-muted">
+            <i
+              class="fas fa-circle-notch animate-spin text-3xl text-brand-primary mb-3"
+            ></i>
+            <p class="text-xs font-bold">Memuat Galeri Terbaru...</p>
           </div>
         </div>
 
         <div class="text-center mt-10 sm:mt-12 reveal">
           <a
             href="gallery.html"
-            class="inline-flex items-center space-x-2 px-8 py-3.5 rounded-full bg-white border border-gray-300 hover:bg-ui-indigo hover:text-white hover:border-ui-indigo text-ui-dark font-bold text-sm transition-all duration-300 shadow-sm"
+            class="inline-flex items-center space-x-2 px-8 py-3.5 rounded-full bg-white border-2 border-slate-200 hover:border-brand-primary hover:text-brand-primary text-brand-dark font-extrabold text-sm transition-all duration-300 shadow-sm"
           >
-            <span>More Images</span>
+            <span>Lihat Seluruh Galeri Foto</span>
             <i class="fas fa-arrow-right text-xs"></i>
           </a>
         </div>
       </section>
 
       <!-- Contact Section -->
-      <section id="contact" class="py-16 sm:py-20 px-4 sm:px-8 bg-gray-50/50 border-t border-gray-200/60">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+      <section
+        id="contact"
+        class="py-16 sm:py-24 px-4 sm:px-8 bg-indigo-50/40 border-t border-indigo-100/60"
+      >
+        <div
+          class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12"
+        >
           <!-- Info Panel -->
           <div class="lg:col-span-5 space-y-6 sm:space-y-8 reveal">
             <div>
-              <span class="text-xs font-bold uppercase tracking-widest text-ui-indigo block mb-2">Kontak</span>
-              <h2 class="text-2xl sm:text-4xl font-extrabold text-ui-dark">Mulai Kolaborasi</h2>
+              <span
+                class="text-xs font-extrabold uppercase tracking-widest text-brand-primary block mb-2"
+                >Hubungi Kami</span
+              >
+              <h2 class="text-3xl sm:text-5xl font-extrabold text-brand-dark">
+                Mulai Diskusi
+              </h2>
             </div>
-            <p class="text-xs sm:text-sm text-ui-muted leading-relaxed">
-              Ada ide proyek yang ingin dikembangkan atau sekedar berdiskusi tentang peluang kerja sama? Kirimkan pesan Anda!
+            <p
+              class="text-xs sm:text-sm text-brand-muted leading-relaxed font-medium"
+            >
+              Siap untuk meningkatkan visual brand atau membutuhkan dokumentasi
+              event berkualitas? Kirimkan detail pesan Anda sekarang.
             </p>
 
             <div class="space-y-3 sm:space-y-4">
-              <div class="flex items-center space-x-4 p-3.5 sm:p-4 bg-white rounded-2xl border border-gray-200/80 shadow-card">
-                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-ui-indigo/10 flex items-center justify-center text-ui-indigo shrink-0"><i class="fas fa-envelope text-sm"></i></div>
+              <div
+                class="flex items-center space-x-4 p-4 bg-white rounded-2xl border border-slate-100 shadow-bento"
+              >
+                <div
+                  class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-brand-primary shrink-0"
+                >
+                  <i class="fas fa-envelope text-sm"></i>
+                </div>
                 <div class="min-w-0">
-                  <p class="text-[10px] sm:text-xs text-ui-muted font-medium">Email</p>
-                  <a href="mailto:alvin@vadigitalcreative.my.id" class="text-xs sm:text-sm font-bold text-ui-dark hover:text-ui-indigo truncate block">alvin@vadigitalcreative.my.id</a>
+                  <p class="text-[10px] sm:text-xs text-brand-muted font-bold">
+                    Email Agensi
+                  </p>
+                  <a
+                    href="mailto:alvin@vadigitalcreative.my.id"
+                    class="text-xs sm:text-sm font-extrabold text-brand-dark hover:text-brand-primary truncate block"
+                    >alvin@vadigitalcreative.my.id</a
+                  >
                 </div>
               </div>
 
-              <div class="flex items-center space-x-4 p-3.5 sm:p-4 bg-white rounded-2xl border border-gray-200/80 shadow-card">
-                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-ui-indigo/10 flex items-center justify-center text-ui-indigo shrink-0"><i class="fab fa-instagram text-sm"></i></div>
+              <div
+                class="flex items-center space-x-4 p-4 bg-white rounded-2xl border border-slate-100 shadow-bento"
+              >
+                <div
+                  class="w-10 h-10 rounded-xl bg-pink-50 flex items-center justify-center text-brand-pink shrink-0"
+                >
+                  <i class="fab fa-instagram text-sm"></i>
+                </div>
                 <div>
-                  <p class="text-[10px] sm:text-xs text-ui-muted font-medium">Instagram</p>
-                  <a href="https://instagram.com/vin.ard" target="_blank" rel="noopener" class="text-xs sm:text-sm font-bold text-ui-dark hover:text-ui-indigo">@vin.ard</a>
+                  <p class="text-[10px] sm:text-xs text-brand-muted font-bold">
+                    Instagram Portfolio
+                  </p>
+                  <a
+                    href="https://instagram.com/vin.ard"
+                    target="_blank"
+                    rel="noopener"
+                    class="text-xs sm:text-sm font-extrabold text-brand-dark hover:text-brand-pink"
+                    >@vin.ard</a
+                  >
+                </div>
+              </div>
+
+              <div
+                class="flex items-center space-x-4 p-4 bg-white rounded-2xl border border-slate-100 shadow-bento"
+              >
+                <div
+                  class="w-10 h-10 rounded-xl bg-cyan-50 flex items-center justify-center text-brand-cyan shrink-0"
+                >
+                  <i class="fas fa-location-dot text-sm"></i>
+                </div>
+                <div>
+                  <p class="text-[10px] sm:text-xs text-brand-muted font-bold">
+                    Lokasi Utama
+                  </p>
+                  <span
+                    class="text-xs sm:text-sm font-extrabold text-brand-dark block"
+                    >Semarang, Jawa Tengah, Indonesia</span
+                  >
                 </div>
               </div>
             </div>
@@ -497,35 +796,97 @@
 
           <!-- Form Panel -->
           <div class="lg:col-span-7 reveal">
-            <form id="contact-form" class="bg-white p-5 sm:p-10 rounded-2xl sm:rounded-3xl border border-gray-200/80 shadow-soft space-y-4 sm:space-y-5">
+            <form
+              id="contact-form"
+              class="bg-white p-6 sm:p-10 rounded-3xl border border-slate-100 shadow-xl space-y-4 sm:space-y-5"
+            >
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                 <div>
-                  <label for="name" class="block text-xs font-bold text-ui-dark mb-1.5">Nama Lengkap</label>
-                  <input type="text" id="name" name="from_name" required class="w-full px-4 py-3 rounded-xl bg-ui-bg border border-gray-200 text-xs sm:text-sm focus:outline-none focus:border-ui-indigo transition" placeholder="Nama Anda" />
+                  <label
+                    for="name"
+                    class="block text-xs font-extrabold text-brand-dark mb-1.5"
+                    >Nama Lengkap / Brand</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    name="from_name"
+                    required
+                    class="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:border-brand-primary focus:bg-white transition"
+                    placeholder="Nama Anda / Perusahaan"
+                  />
                 </div>
                 <div>
-                  <label for="email" class="block text-xs font-bold text-ui-dark mb-1.5">Alamat Email</label>
-                  <input type="email" id="email" name="reply_to" required class="w-full px-4 py-3 rounded-xl bg-ui-bg border border-gray-200 text-xs sm:text-sm focus:outline-none focus:border-ui-indigo transition" placeholder="anda@email.com" />
+                  <label
+                    for="email"
+                    class="block text-xs font-extrabold text-brand-dark mb-1.5"
+                    >Alamat Email</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    name="reply_to"
+                    required
+                    class="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:border-brand-primary focus:bg-white transition"
+                    placeholder="anda@email.com"
+                  />
                 </div>
               </div>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                 <div>
-                  <label for="subject" class="block text-xs font-bold text-ui-dark mb-1.5">Subjek</label>
-                  <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 rounded-xl bg-ui-bg border border-gray-200 text-xs sm:text-sm focus:outline-none focus:border-ui-indigo transition" placeholder="Kerjasama Proyek" />
+                  <label
+                    for="subject"
+                    class="block text-xs font-extrabold text-brand-dark mb-1.5"
+                    >Subjek / Kategori Proyek</label
+                  >
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    required
+                    class="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:border-brand-primary focus:bg-white transition"
+                    placeholder="Foto Produk / Automotive / Event"
+                  />
                 </div>
                 <div>
-                  <label for="phone" class="block text-xs font-bold text-ui-dark mb-1.5">No. Telepon / WA</label>
-                  <input type="tel" id="phone" name="phone_number" required class="w-full px-4 py-3 rounded-xl bg-ui-bg border border-gray-200 text-xs sm:text-sm focus:outline-none focus:border-ui-indigo transition" placeholder="08xxxxxxxxxx" />
+                  <label
+                    for="phone"
+                    class="block text-xs font-extrabold text-brand-dark mb-1.5"
+                    >No. Telepon / WhatsApp</label
+                  >
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone_number"
+                    required
+                    class="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:border-brand-primary focus:bg-white transition"
+                    placeholder="08xxxxxxxxxx"
+                  />
                 </div>
               </div>
 
               <div>
-                <label for="message" class="block text-xs font-bold text-ui-dark mb-1.5">Pesan</label>
-                <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-xl bg-ui-bg border border-gray-200 text-xs sm:text-sm focus:outline-none focus:border-ui-indigo transition resize-none" placeholder="Tuliskan detail ide Anda..."></textarea>
+                <label
+                  for="message"
+                  class="block text-xs font-extrabold text-brand-dark mb-1.5"
+                  >Detail Pesan / Brief Singkat</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                  class="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:border-brand-primary focus:bg-white transition resize-none"
+                  placeholder="Tuliskan ide, jadwal, atau detail brief proyek Anda..."
+                ></textarea>
               </div>
 
-              <button type="submit" id="submit-btn" class="w-full py-3.5 rounded-xl bg-ui-indigo hover:bg-ui-violet text-white font-bold text-sm transition-all duration-300 shadow-md hover:shadow-glow flex items-center justify-center space-x-2">
+              <button
+                type="submit"
+                id="submit-btn"
+                class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-pink hover:opacity-95 text-white font-bold text-sm transition-all duration-300 shadow-glow hover:shadow-pink-glow flex items-center justify-center space-x-2"
+              >
                 <span id="btn-text">Kirim Pesan Sekarang</span>
                 <i class="fas fa-paper-plane text-xs"></i>
               </button>
@@ -535,43 +896,178 @@
       </section>
 
       <!-- Footer -->
-      <footer class="py-8 px-4 border-t border-gray-200/60 text-center text-xs text-ui-muted">
-        <p>&copy; <span id="year">2026</span> Alvin Ardian (vin.ard) — All rights reserved.</p>
+      <footer
+        class="py-8 px-4 border-t border-slate-100 text-center text-xs text-brand-muted font-medium"
+      >
+        <p>
+          &copy; <span id="year">2026</span>
+          <strong>VA Digital Creative</strong> — Directed by Alvin Ardian
+          (vin.ard). All rights reserved.
+        </p>
       </footer>
     </div>
 
-    <!-- Back to top -->
-    <button id="btn-top" class="fixed bottom-6 right-6 z-40 w-10 h-10 rounded-full bg-white border border-gray-200 shadow-lg text-ui-dark opacity-0 transition-all focus:outline-none flex items-center justify-center pointer-events-none">
+    <!-- Back to top button -->
+    <button
+      id="btn-top"
+      class="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-white border border-slate-200 shadow-lg text-brand-dark opacity-0 transition-all focus:outline-none flex items-center justify-center pointer-events-none hover:bg-brand-primary hover:text-white hover:border-brand-primary"
+    >
       <i class="fas fa-arrow-up text-xs"></i>
     </button>
 
     <!-- Modal Lightbox -->
-    <div id="portfolio-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-      <button id="modal-close" class="absolute top-6 right-6 text-white text-3xl">&times;</button>
+    <div
+      id="portfolio-modal"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300"
+    >
+      <button
+        id="modal-close"
+        class="absolute top-6 right-6 text-white text-3xl font-bold"
+      >
+        &times;
+      </button>
       <div class="max-w-4xl max-h-[85vh] p-4 flex flex-col items-center">
-        <img id="modal-img" src="" alt="Preview" class="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl" />
-        <h3 id="modal-title" class="text-white text-base font-bold mt-4 text-center"></h3>
+        <img
+          id="modal-img"
+          src=""
+          alt="Preview"
+          class="max-w-full max-h-[75vh] object-contain rounded-2xl shadow-2xl"
+        />
+        <h3
+          id="modal-title"
+          class="text-white text-sm font-bold mt-4 text-center"
+        ></h3>
       </div>
     </div>
 
     <!-- SCRIPTS INTEGRASI & LOGIC -->
     <script>
-      const CMS_URL = "https://script.google.com/macros/s/AKfycbxzanh9WbwFRDk0kbPWNpSGsjqlXksanv_r5hE0E_8Uy2XCBEaS3-G3VF7_HEoSW-vb/exec?action=getData";
+      const CMS_URL =
+        "https://script.google.com/macros/s/AKfycbxzanh9WbwFRDk0kbPWNpSGsjqlXksanv_r5hE0E_8Uy2XCBEaS3-G3VF7_HEoSW-vb/exec?action=getData";
 
       document.getElementById("year").textContent = new Date().getFullYear();
 
-      // Mobile Menu
-      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-      const mobileCloseBtn = document.getElementById("mobile-close-btn");
-      const mobileDrawer = document.getElementById("mobile-drawer");
-      mobileMenuBtn.addEventListener("click", () => mobileDrawer.classList.remove("-translate-y-full"));
-      mobileCloseBtn.addEventListener("click", () => mobileDrawer.classList.add("-translate-y-full"));
+      // LOGIKA KURSOR METEOR SPARKLE TRAIL (CANVAS PARTICLE ANIMATION)
+      (function initMeteorTrail() {
+        if (!window.matchMedia("(pointer: fine)").matches) return;
 
-      // Scroll Reveal
+        const canvas = document.getElementById("meteor-canvas");
+        const ctx = canvas.getContext("2d");
+
+        let width = (canvas.width = window.innerWidth);
+        let height = (canvas.height = window.innerHeight);
+
+        window.addEventListener("resize", () => {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+        });
+
+        const particles = [];
+        const colors = [
+          "#6366F1", // Indigo
+          "#8B5CF6", // Violet
+          "#EC4899", // Neon Pink
+          "#06B6D4", // Cyan
+          "#F43F5E", // Rose
+        ];
+
+        class MeteorParticle {
+          constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            this.size = Math.random() * 5 + 2;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+            this.vx = (Math.random() - 0.5) * 2;
+            this.vy = (Math.random() - 0.5) * 2 + 1; // Meluncur sedikit ke bawah bagai meteor
+            this.life = 1; // Opacity awal
+            this.decay = Math.random() * 0.03 + 0.015; // Kecepatan memudar
+          }
+
+          update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            this.size *= 0.95; // Mengecil berangsur
+            this.life -= this.decay;
+          }
+
+          draw() {
+            ctx.save();
+            ctx.globalAlpha = Math.max(this.life, 0);
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.shadowBlur = 12;
+            ctx.shadowColor = this.color;
+            ctx.fill();
+            ctx.restore();
+          }
+        }
+
+        document.addEventListener("mousemove", (e) => {
+          // Buat 3 partikel per gerakan kursor agar ekor meteor terlihat tebal
+          for (let i = 0; i < 3; i++) {
+            particles.push(new MeteorParticle(e.clientX, e.clientY));
+          }
+        });
+
+        function animate() {
+          ctx.clearRect(0, 0, width, height);
+
+          for (let i = particles.length - 1; i >= 0; i--) {
+            const p = particles[i];
+            p.update();
+            p.draw();
+
+            if (p.life <= 0 || p.size <= 0.2) {
+              particles.splice(i, 1);
+            }
+          }
+
+          requestAnimationFrame(animate);
+        }
+
+        animate();
+      })();
+
+      // Mobile Menu Dropdown Slide Animation Logic
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileDrawer = document.getElementById("mobile-drawer");
+      const menuIcon = document.getElementById("menu-icon");
+      const navbarCapsule = document.getElementById("navbar-capsule");
+      const mobileLinks = document.querySelectorAll(".mobile-link");
+
+      let isMenuOpen = false;
+
+      function toggleMobileMenu() {
+        isMenuOpen = !isMenuOpen;
+        if (isMenuOpen) {
+          mobileDrawer.classList.remove("opacity-0", "pointer-events-none", "-translate-y-6");
+          mobileDrawer.classList.add("opacity-100", "pointer-events-auto", "translate-y-0");
+          menuIcon.className = "fas fa-times";
+          navbarCapsule.classList.remove("rounded-full");
+          navbarCapsule.classList.add("rounded-t-3xl", "rounded-b-lg");
+        } else {
+          mobileDrawer.classList.add("opacity-0", "pointer-events-none", "-translate-y-6");
+          mobileDrawer.classList.remove("opacity-100", "pointer-events-auto", "translate-y-0");
+          menuIcon.className = "fas fa-bars-staggered";
+          navbarCapsule.classList.remove("rounded-t-3xl", "rounded-b-lg");
+          navbarCapsule.classList.add("rounded-full");
+        }
+      }
+
+      mobileMenuBtn.addEventListener("click", toggleMobileMenu);
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          if (isMenuOpen) toggleMobileMenu();
+        });
+      });
+
+      // Scroll Reveal Logic
       const reveals = document.querySelectorAll(".reveal");
       function checkReveal() {
         const triggerBottom = window.innerHeight * 0.85;
-        reveals.forEach(reveal => {
+        reveals.forEach((reveal) => {
           if (reveal.getBoundingClientRect().top < triggerBottom) {
             reveal.classList.add("active");
           }
@@ -589,40 +1085,48 @@
           btnTop.classList.add("opacity-0", "pointer-events-none");
         }
       });
-      btnTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+      btnTop.addEventListener("click", () =>
+        window.scrollTo({ top: 0, behavior: "smooth" }),
+      );
 
-      // FETCH DATA DARI APPS SCRIPT (CORS-Safe)
+      // FETCH DATA DARI APPS SCRIPT
       async function fetchCMSPortfolio() {
         const grid = document.getElementById("portfolio-grid");
         try {
-          const response = await fetch(CMS_URL, { redirect: 'follow' });
+          const response = await fetch(CMS_URL, { redirect: "follow" });
           const data = await response.json();
 
           if (!data || data.length === 0) {
-            grid.innerHTML = `<p class="col-span-full text-center text-xs text-ui-muted py-8">Belum Ada Foto</p>`;
+            grid.innerHTML = `<p class="col-span-full text-center text-xs text-brand-muted py-8">Belum Ada Foto Terpublikasi</p>`;
             return;
           }
 
           grid.innerHTML = "";
-          // Ambil 6 foto terbaru
           const recentData = data.slice(-6).reverse();
 
-          recentData.forEach(item => {
+          recentData.forEach((item) => {
             const card = document.createElement("div");
-            card.className = "portfolio-item group cursor-pointer bg-white p-2.5 sm:p-3 rounded-2xl border border-gray-200/80 shadow-card hover:shadow-soft transition-all duration-300";
+            card.className =
+              "portfolio-item group cursor-pointer bg-white p-3 rounded-2xl border border-slate-100 shadow-bento hover:shadow-glow transition-all duration-300";
             card.innerHTML = `
-              <div class="relative overflow-hidden rounded-xl aspect-[3/2] bg-gray-100">
-                <img src="${item.imageBase64}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                <div class="absolute inset-0 bg-ui-dark/30 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                  <span class="w-10 h-10 rounded-full bg-white text-ui-dark flex items-center justify-center shadow-lg"><i class="fas fa-expand text-xs"></i></span>
+              <div class="relative overflow-hidden rounded-xl aspect-[3/2] bg-slate-100">
+                <img src="${item.imageBase64}" alt="${item.title || "VA Digital Creative"}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                <div class="absolute inset-0 bg-brand-dark/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                  <span class="w-10 h-10 rounded-full bg-white text-brand-dark flex items-center justify-center shadow-lg"><i class="fas fa-expand text-xs"></i></span>
                 </div>
+              </div>
+              <div class="p-2 pt-3">
+                <h4 class="text-xs font-extrabold text-brand-dark truncate">${item.title || "VA Digital Creative Project"}</h4>
               </div>
             `;
 
             card.addEventListener("click", () => {
               document.getElementById("modal-img").src = item.imageBase64;
-              document.getElementById("modal-title").textContent = item.title;
-              document.getElementById("portfolio-modal").classList.remove("opacity-0", "pointer-events-none");
+              document.getElementById("modal-title").textContent =
+                item.title || "VA Digital Creative Work";
+              document
+                .getElementById("portfolio-modal")
+                .classList.remove("opacity-0", "pointer-events-none");
             });
 
             grid.appendChild(card);
@@ -633,85 +1137,92 @@
         }
       }
 
-      // Close Modal
+      // Close Lightbox Modal
       document.getElementById("modal-close").addEventListener("click", () => {
-        document.getElementById("portfolio-modal").classList.add("opacity-0", "pointer-events-none");
+        document
+          .getElementById("portfolio-modal")
+          .classList.add("opacity-0", "pointer-events-none");
       });
 
-      // --- LOGIKA TOAST NOTIFICATION MODERN ---
-function showToast(title, message, isSuccess = true) {
-  const toast = document.getElementById("toast-notification");
-  const toastTitle = document.getElementById("toast-title");
-  const toastMessage = document.getElementById("toast-message");
-  const toastIcon = document.getElementById("toast-icon");
-  const toastIconBg = document.getElementById("toast-icon-bg");
+      // TOAST NOTIFICATION
+      function showToast(title, message, isSuccess = true) {
+        const toast = document.getElementById("toast-notification");
+        const toastTitle = document.getElementById("toast-title");
+        const toastMessage = document.getElementById("toast-message");
+        const toastIcon = document.getElementById("toast-icon");
+        const toastIconBg = document.getElementById("toast-icon-bg");
 
-  if (!toast) return;
+        if (!toast) return;
 
-  // Set Konten Teks
-  toastTitle.textContent = title;
-  toastMessage.textContent = message;
+        toastTitle.textContent = title;
+        toastMessage.textContent = message;
 
-  // Styling berdasarkan Status (Sukses / Gagal)
-  if (isSuccess) {
-    toastIcon.className = "fas fa-check text-sm";
-    toastIconBg.className = "w-10 h-10 rounded-xl bg-ui-indigo/10 text-ui-indigo flex items-center justify-center shrink-0";
-  } else {
-    toastIcon.className = "fas fa-exclamation-triangle text-sm";
-    toastIconBg.className = "w-10 h-10 rounded-xl bg-red-500/10 text-red-500 flex items-center justify-center shrink-0";
-  }
-
-  // Munculkan Toast (Slide Up & Fade In)
-  toast.classList.remove("translate-y-24", "opacity-0", "pointer-events-none");
-
-  // Sembunyikan Otomatis Setelah 4 Detik
-  setTimeout(() => {
-    toast.classList.add("translate-y-24", "opacity-0", "pointer-events-none");
-  }, 4000);
-}
-
-        // --- EMAILJS SUBMIT HANDLER ---
-        const contactForm = document.getElementById("contact-form");
-        if (contactForm) {
-          contactForm.addEventListener("submit", function(e) {
-            e.preventDefault();
-
-            const submitBtn = document.getElementById("submit-btn");
-            const btnText = document.getElementById("btn-text");
-
-            submitBtn.disabled = true;
-            if (btnText) btnText.textContent = "Mengirim Pesan...";
-
-            emailjs.sendForm("service_gor9a4f", "template_orifdiy", this)
-              .then(() => {
-                // Panggil Toast Pop-up Elegan (Sukses)
-                showToast(
-                  "Pesan Terkirim!", 
-                  "Terima kasih! Pesan Anda telah berhasil diterima.", 
-                  true
-                );
-                this.reset();
-              })
-              .catch((err) => {
-                console.error("EmailJS Error:", err);
-                // Panggil Toast Pop-up Elegan (Gagal)
-                showToast(
-                  "Gagal Mengirim", 
-                  "Terjadi kendala. Silakan coba lagi atau kirim via email langsung.", 
-                  false
-                );
-              })
-              .finally(() => {
-                submitBtn.disabled = false;
-                if (btnText) btnText.textContent = "Kirim Pesan Sekarang";
-              });
-          });
+        if (isSuccess) {
+          toastIcon.className = "fas fa-check text-sm";
+          toastIconBg.className =
+            "w-10 h-10 rounded-xl bg-indigo-50 text-brand-primary flex items-center justify-center shrink-0";
+        } else {
+          toastIcon.className = "fas fa-exclamation-triangle text-sm";
+          toastIconBg.className =
+            "w-10 h-10 rounded-xl bg-red-50 text-red-500 flex items-center justify-center shrink-0";
         }
 
-      // Anti Right Click
+        toast.classList.remove(
+          "translate-y-24",
+          "opacity-0",
+          "pointer-events-none",
+        );
+
+        setTimeout(() => {
+          toast.classList.add(
+            "translate-y-24",
+            "opacity-0",
+            "pointer-events-none",
+          );
+        }, 4000);
+      }
+
+      // EMAILJS SUBMIT HANDLER
+      const contactForm = document.getElementById("contact-form");
+      if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const submitBtn = document.getElementById("submit-btn");
+          const btnText = document.getElementById("btn-text");
+
+          submitBtn.disabled = true;
+          if (btnText) btnText.textContent = "Mengirim Pesan...";
+
+          emailjs
+            .sendForm("service_gor9a4f", "template_orifdiy", this)
+            .then(() => {
+              showToast(
+                "Pesan Terkirim",
+                "Terima kasih! Pesan Anda telah diterima tim VA Digital Creative.",
+                true,
+              );
+              this.reset();
+            })
+            .catch((err) => {
+              console.error("EmailJS Error:", err);
+              showToast(
+                "Gagal Mengirim",
+                "Terjadi kendala. Silakan coba lagi atau hubungi via email langsung.",
+                false,
+              );
+            })
+            .finally(() => {
+              submitBtn.disabled = false;
+              if (btnText) btnText.textContent = "Kirim Pesan Sekarang";
+            });
+        });
+      }
+
+      // Anti Right Click for images
       document.addEventListener("DOMContentLoaded", () => {
-        document.querySelectorAll("img").forEach(img => {
-          img.addEventListener("contextmenu", e => e.preventDefault());
+        document.querySelectorAll("img").forEach((img) => {
+          img.addEventListener("contextmenu", (e) => e.preventDefault());
         });
       });
 
@@ -721,20 +1232,31 @@ function showToast(title, message, isSuccess = true) {
       };
     </script>
 
-    <!-- Toast Notification Modern (Melayang di Bawah Kanan) -->
-    <div 
-      id="toast-notification" 
-      class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-500 ease-out flex items-center space-x-3.5 bg-white/95 backdrop-blur-md border border-gray-200/80 p-4 rounded-2xl shadow-2xl max-w-sm"
+    <!-- Toast Notification Modern -->
+    <div
+      id="toast-notification"
+      class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-500 ease-out flex items-center space-x-3.5 bg-white/95 backdrop-blur-md border border-slate-200 p-4 rounded-2xl shadow-2xl max-w-sm"
     >
-      <!-- Icon Container -->
-      <div id="toast-icon-bg" class="w-10 h-10 rounded-xl bg-ui-indigo/10 flex items-center justify-center text-ui-indigo shrink-0">
+      <div
+        id="toast-icon-bg"
+        class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-brand-primary shrink-0"
+      >
         <i id="toast-icon" class="fas fa-check text-sm"></i>
       </div>
-      
-      <!-- Text Container -->
+
       <div class="pr-2">
-        <h4 id="toast-title" class="font-bold text-ui-dark text-xs sm:text-sm">Pesan Terkirim!</h4>
-        <p id="toast-message" class="text-[11px] sm:text-xs text-ui-muted mt-0.5 leading-snug">Terima kasih, pesan Anda telah berhasil dikirimkan.</p>
+        <h4
+          id="toast-title"
+          class="font-extrabold text-brand-dark text-xs sm:text-sm"
+        >
+          Pesan Terkirim!
+        </h4>
+        <p
+          id="toast-message"
+          class="text-[11px] sm:text-xs text-brand-muted mt-0.5 leading-snug"
+        >
+          Terima kasih, pesan Anda telah berhasil dikirimkan.
+        </p>
       </div>
     </div>
   </body>
