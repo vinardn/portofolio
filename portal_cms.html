@@ -11,19 +11,12 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden; /* Menghilangkan scrollbar di halaman utama */
+            overflow: hidden;
             background-color: #ffffff;
             display: flex;
             flex-direction: column;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(0.95); opacity: 0.7; }
-            50% { transform: scale(1.05); opacity: 1; }
-            100% { transform: scale(0.95); opacity: 0.7; }
-        }
-
-        /* Iframe otomatis mengambil sisa ruang di atas footer */
         iframe {
             display: block;
             width: 100%;
@@ -33,7 +26,11 @@
     </style>
 </head>
 <body>
-    <iframe src="https://script.google.com/macros/s/AKfycbxzanh9WbwFRDk0kbPWNpSGsjqlXksanv_r5hE0E_8Uy2XCBEaS3-G3VF7_HEoSW-vb/exec" title="CMS">
+    <iframe 
+        src="https://script.google.com/macros/s/AKfycbw31TSH-7wD1juYG9vuTwBeFVa6gc0xjypQy1mhPSVfN7m8e8jF1IF9nfCRM7bAzEB-7w/exec" 
+        title="CMS"
+        allow="clipboard-write; storage-access"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals">
     </iframe>
 </body>
 </html>
