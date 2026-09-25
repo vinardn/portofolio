@@ -659,12 +659,12 @@
           </p>
         </div>
 
-        <!-- Dynamic Grid Container -->
+        <!-- Dynamic Masonry Grid Container untuk Beranda -->
         <div
           id="portfolio-grid"
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 reveal"
+          class="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4 min-h-[400px] reveal"
         >
-          <div class="col-span-full text-center py-12 text-brand-muted">
+          <div class="text-center py-12 text-brand-muted">
             <i
               class="fas fa-circle-notch animate-spin text-3xl text-brand-primary mb-3"
             ></i>
@@ -674,7 +674,7 @@
 
         <div class="text-center mt-10 sm:mt-12 reveal">
           <a
-            href="gallery"
+            href="gallery.html"
             class="inline-flex items-center space-x-2 px-8 py-3.5 rounded-full bg-white border-2 border-slate-200 hover:border-brand-primary hover:text-brand-primary text-brand-dark font-extrabold text-sm transition-all duration-300 shadow-sm"
           >
             <span>Lihat Seluruh Galeri Foto</span>
@@ -683,7 +683,7 @@
         </div>
       </section>
 
-      <!-- How It Works Section (Bagian 3 Langkah Mewujudkan Foto Impian Sesuai Gambar) -->
+      <!-- How It Works Section -->
       <section class="py-16 sm:py-24 px-4 sm:px-8 bg-white border-y border-slate-100">
         <div class="max-w-7xl mx-auto">
           <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 reveal">
@@ -997,7 +997,7 @@
 
       document.getElementById("year").textContent = new Date().getFullYear();
 
-      // LOGIKA KURSOR METEOR SPARKLE TRAIL
+      // Kursor
       (function initMeteorTrail() {
         if (!window.matchMedia("(pointer: fine)").matches) return;
 
@@ -1143,7 +1143,7 @@
         });
       }
 
-      // FETCH DATA DARI APPS SCRIPT
+      // FETCH DATA DARI APPS SCRIPT & RENDER CLEAN MASONRY
       async function fetchCMSPortfolio() {
         const grid = document.getElementById("portfolio-grid");
         try {
@@ -1161,32 +1161,34 @@
           const cardsInfo = recentData.map((item) => {
             const card = document.createElement("div");
             card.className =
-              "portfolio-item group cursor-pointer bg-white p-3 rounded-2xl border border-slate-100 shadow-bento hover:shadow-glow transition-all duration-300";
+              "group relative cursor-pointer overflow-hidden rounded-2xl bg-slate-100 break-inside-avoid mb-4 inline-block w-full min-h-[150px]";
 
-            // MENYESUAIKAN DENGAN GOOGLE DRIVE CDN LINK (lh3)
+            // Link Image
             let finalImgUrl = item.imageUrl || item.imageBase64;
             if (item.fileId) {
               finalImgUrl = `https://lh3.googleusercontent.com/d/${item.fileId}`;
             }
 
             card.innerHTML = `
-              <div class="relative overflow-hidden rounded-xl aspect-[3/2] bg-slate-100 flex items-center justify-center">
-                <div class="img-spinner text-brand-primary text-xl">
-                  <i class="fas fa-circle-notch animate-spin"></i>
-                </div>
-                <img 
-                  src="" 
-                  referrerpolicy="no-referrer"
-                  alt="${item.title || "VA Digital Creative"}" 
-                  class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-0 transition-opacity duration-300" 
-                  onerror="this.src='https://via.placeholder.com/600x400?text=Image+Error'"
-                />
-                <div class="absolute inset-0 bg-brand-dark/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                  <span class="w-10 h-10 rounded-full bg-white text-brand-dark flex items-center justify-center shadow-lg"><i class="fas fa-expand text-xs"></i></span>
-                </div>
+              <div class="img-spinner text-brand-primary text-xl absolute inset-0 flex items-center justify-center">
+                <i class="fas fa-circle-notch animate-spin"></i>
               </div>
-              <div class="p-2 pt-3">
-                <h4 class="text-xs font-extrabold text-brand-dark truncate">${item.title || "VA Digital Creative Project"}</h4>
+              
+              <img 
+                src="" 
+                referrerpolicy="no-referrer"
+                alt="${item.title || "VA Digital Creative"}" 
+                class="w-full h-auto block group-hover:scale-105 transition duration-500 opacity-0 transition-opacity duration-300" 
+                onerror="this.src='https://via.placeholder.com/600x400?text=Image+Error'"
+              />
+
+              <!-- Overlay Informasi Foto saat Hover -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-4 text-white">
+                <h4 class="text-xs font-bold tracking-wide leading-tight">${item.title || "VA Digital Creative Project"}</h4>
+                <div class="flex items-center justify-between mt-1 text-[10px] text-gray-300">
+                  <span>${item.category || "General"}</span>
+                  <span>${item.year || "2026"}</span>
+                </div>
               </div>
             `;
 
@@ -1307,7 +1309,7 @@
         });
       }
 
-      // Anti Right Click for images
+      //  Right Click for images
       document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll("img").forEach((img) => {
           img.addEventListener("contextmenu", (e) => e.preventDefault());
